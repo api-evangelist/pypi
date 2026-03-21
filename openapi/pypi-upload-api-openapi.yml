@@ -1,0 +1,210 @@
+openapi: 3.1.0
+info:
+  title: PyPI Upload API
+  description: >-
+    The PyPI Upload API is the endpoint used by tools like twine and build
+    frontends to publish Python package distributions to the Python Package
+    Index. Served at upload.pypi.org, it emulates the legacy PyPI upload
+    interface and accepts source distributions and wheel files along with their
+    metadata via multipart form data. The API also supports attaching PEP 740
+    digital attestations to uploads, which PyPI will verify before accepting.
+    Authentication is handled via API tokens or Trusted Publishing workflows
+    using OpenID Connect.
+  version: '1.0'
+  contact:
+    name: PyPI Support
+    url: https://pypi.org/help/
+  termsOfService: https://pypi.org/policy/terms-of-use/
+externalDocs:
+  description: PyPI Upload API Documentation
+  url: https://docs.pypi.org/api/upload/
+servers:
+  - url: https://upload.pypi.org
+    description: Production Upload Server
+tags:
+  - name: Upload
+    description: >-
+      Upload Python package distributions to the Python Package Index.
+security:
+  - basicAuth: []
+paths:
+  /legacy/:
+    post:
+      operationId: uploadDistribution
+      summary: Upload a distribution file
+      description: >-
+        Uploads a Python package distribution file (source distribution or
+        wheel) to PyPI. The request must use multipart/form-data encoding and
+        include the distribution file as the content part along with package
+        metadata as form fields. Authentication is required via HTTP Basic Auth
+        using the username __token__ and an API token as the password, or via
+        a short-lived token obtained through Trusted Publishing. PEP 740
+        attestations may optionally be attached for supply chain integrity
+        verification.
+      tags:
+        - Upload
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadRequest'
+      responses:
+        '200':
+          description: Distribution uploaded successfully
+        '400':
+          description: >-
+            Bad request. The upload was rejected due to invalid metadata,
+            duplicate filename, or other validation errors.
+        '401':
+          description: >-
+            Authentication required. The request did not include valid
+            credentials.
+        '403':
+          description: >-
+            Forbidden. The authenticated user does not have permission to upload
+            to this project.
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic Authentication using __token__ as the username and a PyPI
+        API token as the password. Trusted Publishers receive short-lived tokens
+        through OpenID Connect that are used in the same manner.
+  schemas:
+    UploadRequest:
+      type: object
+      description: >-
+        The multipart form data payload for uploading a distribution file to
+        PyPI.
+      required:
+        - ':action'
+        - content
+        - filetype
+        - name
+        - version
+      properties:
+        ':action':
+          type: string
+          description: >-
+            The upload action type. Must be file_upload.
+          enum:
+            - file_upload
+        content:
+          type: string
+          format: binary
+          description: >-
+            The distribution file to upload, sent as application/octet-stream.
+        filetype:
+          type: string
+          description: >-
+            The type of distribution being uploaded.
+          enum:
+            - sdist
+            - bdist_wheel
+            - bdist_egg
+        name:
+          type: string
+          description: >-
+            The name of the Python package being uploaded.
+        version:
+          type: string
+          description: >-
+            The version string of the release being uploaded.
+        metadata_version:
+          type: string
+          description: >-
+            The version of the metadata standard used.
+          examples:
+            - '2.1'
+            - '2.3'
+        summary:
+          type: string
+          description: >-
+            A one-line summary of the package.
+        description:
+          type: string
+          description: >-
+            The full description of the package.
+        description_content_type:
+          type: string
+          description: >-
+            The content type of the description, such as text/markdown.
+        author:
+          type: string
+          description: >-
+            The name of the package author.
+        author_email:
+          type: string
+          description: >-
+            The email address of the package author.
+        license:
+          type: string
+          description: >-
+            The license text or identifier for the package.
+        keywords:
+          type: string
+          description: >-
+            Comma-separated keywords for the package.
+        classifiers:
+          type: array
+          description: >-
+            Trove classifiers for the package. Multiple values are sent as
+            repeated form fields.
+          items:
+            type: string
+        home_page:
+          type: string
+          format: uri
+          description: >-
+            The URL of the package home page.
+        requires_python:
+          type: string
+          description: >-
+            The Python version requirement specifier.
+        requires_dist:
+          type: array
+          description: >-
+            PEP 508 dependency specifiers. Multiple values are sent as
+            repeated form fields.
+          items:
+            type: string
+        provides_extra:
+          type: array
+          description: >-
+            Optional extra dependency groups provided by the package. Multiple
+            values are sent as repeated form fields.
+          items:
+            type: string
+        project_urls:
+          type: object
+          description: >-
+            Project-related URLs as label=URL pairs.
+          additionalProperties:
+            type: string
+            format: uri
+        sha256_digest:
+          type: string
+          description: >-
+            The SHA-256 hash digest of the uploaded file for verification.
+        md5_digest:
+          type: string
+          description: >-
+            The MD5 hash digest of the uploaded file. Deprecated.
+        blake2_256_digest:
+          type: string
+          description: >-
+            The BLAKE2b-256 hash digest of the uploaded file for verification.
+        gpg_signature:
+          type: string
+          format: binary
+          description: >-
+            An optional PGP signature for the file. Deprecated.
+        attestations:
+          type: string
+          description: >-
+            A JSON-encoded string containing PEP 740 digital attestations for
+            the distribution file. PyPI will verify these attestations before
+            accepting the upload.

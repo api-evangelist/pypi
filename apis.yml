@@ -1,0 +1,154 @@
+aid: pypi
+url: https://raw.githubusercontent.com/api-evangelist/pypi/refs/heads/main/apis.yml
+apis:
+  - aid: pypi:json-api
+    name: PyPI JSON API
+    tags:
+      - Packages
+      - Python
+      - Metadata
+      - Open Source
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://pypi.org/pypi
+    humanURL: https://docs.pypi.org/api/json/
+    properties:
+      - url: https://docs.pypi.org/api/json/
+        type: Documentation
+      - url: openapi/pypi-json-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      The PyPI JSON API provides metadata about individual Python packages
+      hosted on the Python Package Index. It returns project-level information
+      including the latest version, all available releases, download URLs, and
+      hash digests for MD5, SHA256, and BLAKE2b-256. Developers can query
+      endpoints like /pypi/{project}/json for the latest release metadata or
+      /pypi/{project}/{version}/json for a specific version. Responses are
+      cached by CDN and support ETag headers for conditional requests.
+  - aid: pypi:index-api
+    name: PyPI Index API
+    tags:
+      - Packages
+      - Python
+      - Index
+      - PEP 503
+      - PEP 691
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://pypi.org/simple/
+    humanURL: https://docs.pypi.org/api/index-api/
+    properties:
+      - url: https://docs.pypi.org/api/index-api/
+        type: Documentation
+      - url: openapi/pypi-index-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON)
+      simple repository standards for discovering and downloading Python
+      packages. It provides a machine-readable index of all registered projects
+      and their available distribution files. The API is available in both HTML
+      and JSON formats, with JSON recommended for new integrations. This is the
+      primary API that package installers like pip use to resolve and download
+      dependencies from the Python Package Index.
+  - aid: pypi:integrity-api
+    name: PyPI Integrity API
+    tags:
+      - Security
+      - Attestations
+      - Provenance
+      - Supply Chain
+      - Python
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://pypi.org/integrity
+    humanURL: https://docs.pypi.org/api/integrity/
+    properties:
+      - url: https://docs.pypi.org/api/integrity/
+        type: Documentation
+      - url: openapi/pypi-integrity-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      The PyPI Integrity API provides access to digital attestations and
+      provenance information for Python package distribution files. It allows
+      clients to retrieve cryptographic attestation bundles and Trusted
+      Publishing metadata for individual release files, enabling verification
+      of package authenticity and supply chain integrity. The API implements
+      PEP 740 and returns provenance objects containing one or more Sigstore
+      attestation bundles along with the identity that produced them. This
+      endpoint is currently available in JSON format only.
+  - aid: pypi:upload-api
+    name: PyPI Upload API
+    tags:
+      - Packages
+      - Python
+      - Publishing
+      - Upload
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://upload.pypi.org/legacy/
+    humanURL: https://docs.pypi.org/api/upload/
+    properties:
+      - url: https://docs.pypi.org/api/upload/
+        type: Documentation
+      - url: openapi/pypi-upload-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      The PyPI Upload API is the endpoint used by tools like twine and build
+      frontends to publish Python package distributions to the Python Package
+      Index. Served at upload.pypi.org, it emulates the legacy PyPI upload
+      interface and accepts source distributions and wheel files along with
+      their metadata. The API also supports attaching PEP 740 digital
+      attestations to uploads, which PyPI will verify before accepting.
+      Authentication is handled via API tokens or Trusted Publishing workflows
+      using OpenID Connect.
+  - aid: pypi:rss-feeds
+    name: PyPI RSS Feeds
+    tags:
+      - Packages
+      - Python
+      - RSS
+      - Feeds
+      - Updates
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://pypi.org/rss
+    humanURL: https://docs.pypi.org/api/feeds/
+    properties:
+      - url: https://docs.pypi.org/api/feeds/
+        type: Documentation
+    description: >-
+      PyPI provides RSS feeds that allow developers and tools to monitor
+      package activity on the Python Package Index. Three feeds are available:
+      the Newest Packages feed for recently registered projects, the Latest
+      Updates feed for the most recently updated projects, and per-project
+      release feeds for tracking new versions of specific packages. These feeds
+      enable integration with feed readers, monitoring tools, and automation
+      workflows to stay informed about Python package ecosystem changes.
+  - aid: pypi:stats-api
+    name: PyPI Stats API
+    tags:
+      - Packages
+      - Python
+      - Statistics
+      - Downloads
+      - Analytics
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://pypistats.org/api
+    humanURL: https://pypistats.org/api/
+    properties:
+      - url: https://pypistats.org/api/
+        type: Documentation
+      - url: openapi/pypi-stats-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      The PyPI Stats API provides aggregate download statistics and time series
+      data for Python packages hosted on PyPI. It offers JSON endpoints for
+      querying download counts broken down by Python version, operating system,
+      and time period. Time series data is retained for 180 days and all
+      download statistics are updated once daily. The API is hosted at
+      pypistats.org and serves as the primary programmatic interface for
+      analyzing Python package adoption and download trends across the
+      ecosystem.
+common:
+  - type: JSON-LD
+    url: json-ld/pypi-context.jsonld
+  - type: JSONSchema
+    url: json-schema/pypi-project-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/pypi-provenance-schema.json
+modified: '2026-03-20'

@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pypi.org/schemas/pypi/project-metadata.json",
+  "title": "PyPI Project Metadata",
+  "description": "Core metadata for a Python package hosted on PyPI, as returned by the JSON API. This schema captures the info object that describes authorship, licensing, dependencies, and classification of a project.",
+  "type": "object",
+  "required": ["name", "version"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the Python package.",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$"
+    },
+    "version": {
+      "type": "string",
+      "description": "The version string of the release, following PEP 440.",
+      "minLength": 1
+    },
+    "summary": {
+      "type": ["string", "null"],
+      "description": "A one-line summary of what the package does.",
+      "maxLength": 512
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "The full description of the package, which may be in reStructuredText, Markdown, or plain text."
+    },
+    "description_content_type": {
+      "type": ["string", "null"],
+      "description": "The content type of the description field.",
+      "enum": [null, "text/plain", "text/x-rst", "text/markdown"]
+    },
+    "author": {
+      "type": ["string", "null"],
+      "description": "The name of the package author."
+    },
+    "author_email": {
+      "type": ["string", "null"],
+      "description": "The email address of the package author.",
+      "format": "email"
+    },
+    "maintainer": {
+      "type": ["string", "null"],
+      "description": "The name of the package maintainer."
+    },
+    "maintainer_email": {
+      "type": ["string", "null"],
+      "description": "The email address of the package maintainer.",
+      "format": "email"
+    },
+    "license": {
+      "type": ["string", "null"],
+      "description": "The license text or identifier for the package."
+    },
+    "license_expression": {
+      "type": ["string", "null"],
+      "description": "A SPDX license expression for the package."
+    },
+    "license_files": {
+      "type": ["array", "null"],
+      "description": "A list of license file paths included in the distribution.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keywords": {
+      "type": ["string", "null"],
+      "description": "Comma-separated keywords describing the package."
+    },
+    "classifiers": {
+      "type": "array",
+      "description": "Trove classifiers indicating the package maturity, audience, license, and supported environments.",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z]"
+      }
+    },
+    "platform": {
+      "type": ["string", "null"],
+      "description": "The platform the package targets."
+    },
+    "home_page": {
+      "type": ["string", "null"],
+      "description": "The URL of the project home page.",
+      "format": "uri"
+    },
+    "project_url": {
+      "type": "string",
+      "description": "The canonical URL of the project on PyPI.",
+      "format": "uri"
+    },
+    "project_urls": {
+      "type": ["object", "null"],
+      "description": "A mapping of label strings to URL strings for project-related links.",
+      "additionalProperties": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "requires_python": {
+      "type": ["string", "null"],
+      "description": "The Python version requirement specifier, following PEP 440."
+    },
+    "requires_dist": {
+      "type": ["array", "null"],
+      "description": "A list of PEP 508 dependency specifiers required by the package.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provides_extra": {
+      "type": ["array", "null"],
+      "description": "A list of optional extra dependency groups provided by the package.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dynamic": {
+      "type": ["array", "null"],
+      "description": "Metadata fields that are dynamically specified at build time.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "yanked": {
+      "type": "boolean",
+      "description": "Whether this release has been yanked from the index."
+    },
+    "yanked_reason": {
+      "type": ["string", "null"],
+      "description": "The reason the release was yanked, if applicable."
+    }
+  },
+  "$defs": {
+    "ReleaseFile": {
+      "type": "object",
+      "description": "Metadata about a single distribution file within a release.",
+      "required": ["filename", "url"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "description": "The name of the distribution file."
+        },
+        "url": {
+          "type": "string",
+          "description": "The download URL for the distribution file.",
+          "format": "uri"
+        },
+        "size": {
+          "type": "integer",
+          "description": "The size of the file in bytes.",
+          "minimum": 0
+        },
+        "packagetype": {
+          "type": "string",
+          "description": "The type of distribution.",
+          "enum": ["sdist", "bdist_wheel", "bdist_egg", "bdist_wininst", "bdist_rpm"]
+        },
+        "python_version": {
+          "type": "string",
+          "description": "The Python version this distribution targets."
+        },
+        "requires_python": {
+          "type": ["string", "null"],
+          "description": "The Python version requirement for this file."
+        },
+        "upload_time_iso_8601": {
+          "type": "string",
+          "description": "The ISO 8601 timestamp when the file was uploaded.",
+          "format": "date-time"
+        },
+        "digests": {
+          "$ref": "#/$defs/Digests"
+        },
+        "yanked": {
+          "type": "boolean",
+          "description": "Whether this file has been yanked."
+        },
+        "yanked_reason": {
+          "type": ["string", "null"],
+          "description": "The reason the file was yanked."
+        }
+      }
+    },
+    "Digests": {
+      "type": "object",
+      "description": "Cryptographic hash digests for a distribution file.",
+      "properties": {
+        "md5": {
+          "type": "string",
+          "description": "MD5 hash digest of the file.",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "sha256": {
+          "type": "string",
+          "description": "SHA-256 hash digest of the file.",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "blake2b_256": {
+          "type": "string",
+          "description": "BLAKE2b-256 hash digest of the file.",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "Vulnerability": {
+      "type": "object",
+      "description": "A known security vulnerability affecting the project.",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the vulnerability, such as a CVE or PYSEC ID."
+        },
+        "aliases": {
+          "type": "array",
+          "description": "Alternative identifiers for this vulnerability.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "summary": {
+          "type": "string",
+          "description": "A brief summary of the vulnerability."
+        },
+        "details": {
+          "type": "string",
+          "description": "A detailed description of the vulnerability."
+        },
+        "fixed_in": {
+          "type": "array",
+          "description": "Version strings in which the vulnerability was fixed.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "link": {
+          "type": "string",
+          "description": "A URL with more information about the vulnerability.",
+          "format": "uri"
+        }
+      }
+    }
+  }
+}

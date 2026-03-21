@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pypi.org/schemas/pypi/provenance.json",
+  "title": "PyPI Provenance",
+  "description": "A PEP 740 provenance object representing digital attestations for a Python package distribution file. Contains one or more attestation bundles verified by PyPI, along with the Trusted Publisher identity that produced them.",
+  "type": "object",
+  "required": ["version", "attestation_bundles"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "description": "The provenance object format version. Currently always 1.",
+      "enum": [1]
+    },
+    "attestation_bundles": {
+      "type": "array",
+      "description": "One or more attestation bundles, each containing the publisher identity and a set of attestations.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/AttestationBundle"
+      }
+    }
+  },
+  "$defs": {
+    "AttestationBundle": {
+      "type": "object",
+      "description": "A bundle of attestations produced by a single Trusted Publisher identity.",
+      "required": ["publisher", "attestations"],
+      "properties": {
+        "publisher": {
+          "$ref": "#/$defs/Publisher"
+        },
+        "attestations": {
+          "type": "array",
+          "description": "The attestation objects in this bundle.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/Attestation"
+          }
+        }
+      }
+    },
+    "Publisher": {
+      "type": "object",
+      "description": "The Trusted Publisher identity that produced the attestations, verified through OpenID Connect.",
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "description": "The type of Trusted Publisher, indicating the CI/CD platform.",
+          "enum": ["GitHub", "GitLab", "Google", "ActiveState"]
+        },
+        "claims": {
+          "type": "object",
+          "description": "Identity claims from the OIDC token, such as repository and workflow information.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "vendor-property": {
+          "type": ["string", "null"],
+          "description": "An optional vendor-specific property providing additional publisher context."
+        }
+      }
+    },
+    "Attestation": {
+      "type": "object",
+      "description": "A single attestation for a distribution file, containing the attestation type and a Sigstore bundle.",
+      "required": ["version", "verification_material", "envelope"],
+      "properties": {
+        "version": {
+          "type": "integer",
+          "description": "The attestation object version. Currently always 1.",
+          "enum": [1]
+        },
+        "verification_material": {
+          "type": "object",
+          "description": "Sigstore verification material including the signing certificate and transparency log entries.",
+          "properties": {
+            "certificate": {
+              "type": "string",
+              "description": "The base64-encoded signing certificate from the Sigstore CA."
+            },
+            "transparency_entries": {
+              "type": "array",
+              "description": "Entries from the Sigstore transparency log (Rekor).",
+              "items": {
+                "type": "object",
+                "description": "A single transparency log entry.",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "envelope": {
+          "type": "object",
+          "description": "The DSSE envelope containing the signed attestation statement.",
+          "properties": {
+            "statement": {
+              "type": "string",
+              "description": "The base64-encoded attestation statement."
+            },
+            "signature": {
+              "type": "string",
+              "description": "The base64-encoded signature over the statement."
+            }
+          }
+        }
+      }
+    }
+  }
+}

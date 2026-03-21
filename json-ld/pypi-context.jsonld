@@ -1,0 +1,144 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pypi": "https://pypi.org/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "spdx": "https://spdx.org/rdf/terms#",
+
+    "Project": {
+      "@id": "pypi:Project",
+      "@context": {
+        "name": "schema:name",
+        "version": "schema:softwareVersion",
+        "summary": "schema:description",
+        "description": "schema:text",
+        "author": "schema:author",
+        "authorEmail": "schema:email",
+        "maintainer": "schema:maintainer",
+        "maintainerEmail": "schema:email",
+        "license": "schema:license",
+        "licenseExpression": {
+          "@id": "spdx:licenseId",
+          "@type": "xsd:string"
+        },
+        "keywords": "schema:keywords",
+        "classifiers": {
+          "@id": "pypi:classifier",
+          "@container": "@set"
+        },
+        "homePage": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "projectUrl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "requiresPython": {
+          "@id": "pypi:requiresPython",
+          "@type": "xsd:string"
+        },
+        "requiresDist": {
+          "@id": "pypi:requiresDist",
+          "@container": "@set"
+        },
+        "projectUrls": {
+          "@id": "pypi:projectUrls",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "Release": {
+      "@id": "pypi:Release",
+      "@context": {
+        "version": "schema:softwareVersion",
+        "uploadTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "yanked": {
+          "@id": "pypi:yanked",
+          "@type": "xsd:boolean"
+        },
+        "yankedReason": {
+          "@id": "pypi:yankedReason",
+          "@type": "xsd:string"
+        },
+        "files": {
+          "@id": "pypi:hasFile",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "DistributionFile": {
+      "@id": "pypi:DistributionFile",
+      "@context": {
+        "filename": "schema:name",
+        "url": {
+          "@id": "schema:contentUrl",
+          "@type": "@id"
+        },
+        "size": {
+          "@id": "schema:contentSize",
+          "@type": "xsd:integer"
+        },
+        "packageType": "pypi:packageType",
+        "pythonVersion": "pypi:pythonVersion",
+        "md5Digest": {
+          "@id": "pypi:md5Digest",
+          "@type": "xsd:string"
+        },
+        "sha256Digest": {
+          "@id": "pypi:sha256Digest",
+          "@type": "xsd:string"
+        },
+        "blake2b256Digest": {
+          "@id": "pypi:blake2b256Digest",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Vulnerability": {
+      "@id": "pypi:Vulnerability",
+      "@context": {
+        "id": "dcterms:identifier",
+        "summary": "schema:description",
+        "details": "schema:text",
+        "aliases": {
+          "@id": "schema:alternateName",
+          "@container": "@set"
+        },
+        "fixedIn": {
+          "@id": "pypi:fixedIn",
+          "@container": "@set"
+        },
+        "link": {
+          "@id": "schema:url",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Provenance": {
+      "@id": "pypi:Provenance",
+      "@context": {
+        "version": "schema:version",
+        "attestationBundles": {
+          "@id": "pypi:attestationBundle",
+          "@container": "@set"
+        },
+        "publisher": "pypi:publisher",
+        "publisherKind": "pypi:publisherKind",
+        "attestationType": {
+          "@id": "pypi:attestationType",
+          "@type": "@id"
+        }
+      }
+    }
+  }
+}
