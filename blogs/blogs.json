@@ -1,0 +1,13 @@
+{
+  "repo": "pypi",
+  "feeds": [
+    {
+      "source": "https://blog.pypi.org/",
+      "feed_url": "https://blog.pypi.org/feed_rss_created.xml",
+      "saved": 10,
+      "title": "The Python Package Index Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:34:17Z"
+}
