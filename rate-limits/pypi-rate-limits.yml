@@ -4,111 +4,57 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: PyPI
 providerId: pypi
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Developer Tools
-  - Open Source
-  - Package Management
-  - Packages
+  - Package Registry
   - Python
+  - Open Source
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the PyPI API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
+description: PyPI does not publish a hard per-second rate limit. The JSON, Index, and RSS APIs are heavily
+  cached and CDN-fronted via Fastly, so PyPI states there is "currently no rate limiting of PyPI APIs
+  at the edge." The legacy XML-RPC API may be rate-limited if usage degrades service. PyPI reserves
+  the right to ban irresponsible consumers.
+notes: PyPI's rate-limit posture is a soft policy expressed in the docs.pypi.org help pages, not a numeric
+  per-second table. Consumers must set a descriptive User-Agent that uniquely identifies their client.
+sources:
+  - https://docs.pypi.org/api/
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  cache: X-Cache
+  cacheHits: X-Cache-Hits
+  etag: ETag
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - PyPI JSON API
-      - PyPI Index API
-      - PyPI Integrity API
-      - PyPI Upload API
-      - PyPI RSS Feeds
-      - PyPI Stats API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - PyPI JSON API
-      - PyPI Index API
-      - PyPI Integrity API
-      - PyPI Upload API
-      - PyPI RSS Feeds
-      - PyPI Stats API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - PyPI JSON API
-      - PyPI Index API
-      - PyPI Integrity API
-      - PyPI Upload API
-      - PyPI RSS Feeds
-      - PyPI Stats API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - PyPI JSON API
-      - PyPI Index API
-      - PyPI Integrity API
-      - PyPI Upload API
-      - PyPI RSS Feeds
-      - PyPI Stats API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - PyPI JSON API
-      - PyPI Index API
-      - PyPI Integrity API
-      - PyPI Upload API
-      - PyPI RSS Feeds
-      - PyPI Stats API
+  - name: JSON / Index / RSS APIs
+    scope: IP
+    metric: varies
+    limit: 'no edge rate limit (heavily cached via Fastly CDN)'
+    notes: 'PyPI states "currently no rate limiting of PyPI APIs at the edge"; consumers should still
+      avoid thousands of requests per minute and should prefer ETag-conditional requests.'
+  - name: XML-RPC API (legacy)
+    scope: IP
+    metric: varies
+    limit: 'rate-limited at PyPI''s discretion if usage degrades service'
+    notes: PyPI may temporarily or permanently throttle XML-RPC consumers whose usage causes service
+      degradation.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: User-Agent Identification
+    description: Set a descriptive User-Agent that uniquely identifies your requests and ideally includes
+      contact information; opaque or default agents may be rate-limited or blocked.
+  - name: ETag and Conditional Requests
+    description: The JSON, RSS, and Index APIs return ETag headers — use If-None-Match conditional
+      requests to avoid hammering uncached origins.
+  - name: Caching Awareness
+    description: Inspect X-Cache and X-Cache-Hits to understand whether your requests are being served
+      from CDN cache; design crawlers around the CDN rather than the origin.
+  - name: Discretionary Bans
+    description: PyPI reserves the right to temporarily or permanently prohibit a consumer based on
+      irresponsible activity; sustained high-volume crawling without identification or backoff risks
+      a block.
+  - name: Pacing Guidance
+    description: PyPI advises against thousands of requests in a short window (minutes); prefer serial
+      requests over longer periods when feasible.
 maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
