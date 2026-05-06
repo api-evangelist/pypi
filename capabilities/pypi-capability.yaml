@@ -1,0 +1,93 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PyPI Index API
+  description: The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering
+    and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution
+    files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary
+    API that package installers like pip use to resolve and download dependencies from the Python Package Index.
+  tags:
+  - Pypi
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: pypi
+    baseUri: https://pypi.org
+    description: PyPI Index API HTTP API.
+    resources:
+    - name: simple
+      path: /simple/
+      operations:
+      - name: listprojects
+        method: GET
+        description: List all projects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: simple-project
+      path: /simple/{project}/
+      operations:
+      - name: getprojectfiles
+        method: GET
+        description: Get project distribution files
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: pypi-rest
+    description: REST adapter for PyPI Index API.
+    resources:
+    - path: /simple/
+      name: listprojects
+      operations:
+      - method: GET
+        name: listprojects
+        description: List all projects
+        call: pypi.listprojects
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /simple/{project}/
+      name: getprojectfiles
+      operations:
+      - method: GET
+        name: getprojectfiles
+        description: Get project distribution files
+        call: pypi.getprojectfiles
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: pypi-mcp
+    transport: http
+    description: MCP adapter for PyPI Index API for AI agent use.
+    tools:
+    - name: listprojects
+      description: List all projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pypi.listprojects
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getprojectfiles
+      description: Get project distribution files
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pypi.getprojectfiles
+      outputParameters:
+      - type: object
+        mapping: $.
