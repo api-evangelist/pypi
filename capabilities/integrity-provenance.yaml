@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PyPI Integrity API — Provenance
+  description: 'PyPI Integrity API — Provenance. 1 operations. Lead operation: Get file provenance. Self-contained Naftiko
+    capability covering one Pypi business surface.'
+  tags:
+  - Pypi
+  - Provenance
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PYPI_API_KEY: PYPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: integrity-provenance
+    baseUri: https://pypi.org
+    description: PyPI Integrity API — Provenance business capability. Self-contained, no shared references.
+    resources:
+    - name: integrity-project-version-filename-provenance
+      path: /integrity/{project}/{version}/{filename}/provenance
+      operations:
+      - name: getfileprovenance
+        method: GET
+        description: Get file provenance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: integrity-provenance-rest
+    port: 8080
+    description: REST adapter for PyPI Integrity API — Provenance. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/integrity/{project}/{version}/{filename}/provenance
+      name: integrity-project-version-filename-provenance
+      description: REST surface for integrity-project-version-filename-provenance.
+      operations:
+      - method: GET
+        name: getfileprovenance
+        description: Get file provenance
+        call: integrity-provenance.getfileprovenance
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: integrity-provenance-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PyPI Integrity API — Provenance. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-file-provenance
+      description: Get file provenance
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: integrity-provenance.getfileprovenance
+      outputParameters:
+      - type: object
+        mapping: $.

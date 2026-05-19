@@ -1,21 +1,23 @@
 naftiko: 1.0.0-alpha2
 info:
-  label: PyPI Index API
-  description: The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering
-    and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution
-    files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary
-    API that package installers like pip use to resolve and download dependencies from the Python Package Index.
+  label: PyPI Index API — Index
+  description: 'PyPI Index API — Index. 2 operations. Lead operation: List all projects. Self-contained Naftiko capability
+    covering one Pypi business surface.'
   tags:
   - Pypi
-  - API
-  created: '2026-05-06'
-  modified: '2026-05-06'
+  - Index
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PYPI_API_KEY: PYPI_API_KEY
 capability:
   consumes:
   - type: http
-    namespace: pypi
+    namespace: index-index
     baseUri: https://pypi.org
-    description: PyPI Index API HTTP API.
+    description: PyPI Index API — Index business capability. Self-contained, no shared references.
     resources:
     - name: simple
       path: /simple/
@@ -41,53 +43,57 @@ capability:
           value: $.
   exposes:
   - type: rest
+    namespace: index-index-rest
     port: 8080
-    namespace: pypi-rest
-    description: REST adapter for PyPI Index API.
+    description: REST adapter for PyPI Index API — Index. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
     resources:
-    - path: /simple/
-      name: listprojects
+    - path: /v1/simple
+      name: simple
+      description: REST surface for simple.
       operations:
       - method: GET
         name: listprojects
         description: List all projects
-        call: pypi.listprojects
+        call: index-index.listprojects
         outputParameters:
         - type: object
           mapping: $.
-    - path: /simple/{project}/
-      name: getprojectfiles
+    - path: /v1/simple/{project}
+      name: simple-project
+      description: REST surface for simple-project.
       operations:
       - method: GET
         name: getprojectfiles
         description: Get project distribution files
-        call: pypi.getprojectfiles
+        call: index-index.getprojectfiles
         outputParameters:
         - type: object
           mapping: $.
   - type: mcp
+    namespace: index-index-mcp
     port: 9090
-    namespace: pypi-mcp
     transport: http
-    description: MCP adapter for PyPI Index API for AI agent use.
+    description: MCP adapter for PyPI Index API — Index. One tool per consumed operation, routed inline through this capability's
+      consumes block.
     tools:
-    - name: listprojects
+    - name: list-all-projects
       description: List all projects
       hints:
         readOnly: true
         destructive: false
         idempotent: true
-      call: pypi.listprojects
+      call: index-index.listprojects
       outputParameters:
       - type: object
         mapping: $.
-    - name: getprojectfiles
+    - name: get-project-distribution-files
       description: Get project distribution files
       hints:
         readOnly: true
         destructive: false
         idempotent: true
-      call: pypi.getprojectfiles
+      call: index-index.getprojectfiles
       outputParameters:
       - type: object
         mapping: $.

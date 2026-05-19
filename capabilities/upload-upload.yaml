@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PyPI Upload API — Upload
+  description: 'PyPI Upload API — Upload. 1 operations. Lead operation: Upload a distribution file. Self-contained Naftiko
+    capability covering one Pypi business surface.'
+  tags:
+  - Pypi
+  - Upload
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PYPI_API_KEY: PYPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: upload-upload
+    baseUri: https://upload.pypi.org
+    description: PyPI Upload API — Upload business capability. Self-contained, no shared references.
+    resources:
+    - name: legacy
+      path: /legacy/
+      operations:
+      - name: uploaddistribution
+        method: POST
+        description: Upload a distribution file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.PYPI_USER}}'
+      password: '{{env.PYPI_PASS}}'
+  exposes:
+  - type: rest
+    namespace: upload-upload-rest
+    port: 8080
+    description: REST adapter for PyPI Upload API — Upload. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/legacy
+      name: legacy
+      description: REST surface for legacy.
+      operations:
+      - method: POST
+        name: uploaddistribution
+        description: Upload a distribution file
+        call: upload-upload.uploaddistribution
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: upload-upload-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PyPI Upload API — Upload. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: upload-distribution-file
+      description: Upload a distribution file
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: upload-upload.uploaddistribution
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
