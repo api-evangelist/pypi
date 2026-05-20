@@ -3,12 +3,11 @@
   "feeds": [
     {
       "source": "https://blog.pypi.org/",
-      "feed_url": "",
-      "title": "",
-      "saved": 0,
-      "error": "no_feed"
+      "feed_url": "https://blog.pypi.org/feed_rss_created.xml",
+      "title": "The Python Package Index Blog",
+      "saved": 13
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-09T20:17:51Z"
+  "post_count": 23,
+  "fetched": "2026-05-17T20:48:52Z"
 }
