@@ -2,12 +2,20 @@
   "repo": "pypi",
   "feeds": [
     {
-      "source": "https://blog.pypi.org/",
+      "source": "https://blog.pypi.org/feed_rss_created.xml",
       "feed_url": "https://blog.pypi.org/feed_rss_created.xml",
-      "title": "The Python Package Index Blog",
-      "saved": 13
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://pypi.org/help/",
+      "feed_url": "https://pypi.org/rss/updates.xml",
+      "title": "",
+      "saved": 60,
+      "method": "discovered"
     }
   ],
-  "post_count": 23,
-  "fetched": "2026-05-17T20:48:52Z"
+  "post_count": 83,
+  "fetched": "2026-06-01T23:35:02Z"
 }
