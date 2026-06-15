@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PyPI Integrity API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Provenance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get file provenance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pypi.org/integrity/:project/:version/:filename/provenance",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "The normalized name of the Python package on PyPI."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "The version string of the release."
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path",
+                "description": "The exact filename of the distribution file to retrieve provenance for."
+              }
+            ]
+          },
+          "docs": "Returns the provenance object for the given distribution filename. The provenance object contains one or more attestation bundles verified by PyPI, along with the Trusted Publisher identity that produced them. This endpoint implements PEP 740 and is currently available in JSON format only."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

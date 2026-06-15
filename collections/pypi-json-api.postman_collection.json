@@ -1,0 +1,326 @@
+{
+  "item": [
+    {
+      "id": "77dfbecc-35f6-473c-a173-93618cf7a0fd",
+      "name": "Projects",
+      "description": {
+        "content": "Retrieve metadata about Python packages hosted on PyPI, including release information, download URLs, and vulnerability data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9d771708-9563-434a-b679-b6fecc02d1f2",
+          "name": "Get project metadata",
+          "request": {
+            "name": "Get project metadata",
+            "description": {
+              "content": "Returns metadata about an individual project at the latest version, including a list of all releases for that project, project URLs, and known vulnerabilities. The response includes info, last_serial, releases, urls, and vulnerabilities fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pypi",
+                ":project",
+                "json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) The normalized name of the Python package on PyPI."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c9fe127-a182-4ea3-9af7-83b86828a956",
+              "name": "Project metadata retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pypi",
+                    ":project",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) The normalized name of the Python package on PyPI."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Entity tag for cache validation. Use with If-None-Match header for conditional requests.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"name\": \"string\",\n    \"version\": \"string\",\n    \"summary\": \"string\",\n    \"description\": \"string\",\n    \"description_content_type\": \"string\",\n    \"author\": \"string\",\n    \"author_email\": \"string\",\n    \"maintainer\": \"string\",\n    \"maintainer_email\": \"string\",\n    \"license\": \"string\",\n    \"license_expression\": \"string\",\n    \"license_files\": [\n      \"string\",\n      \"string\"\n    ],\n    \"keywords\": \"string\",\n    \"classifiers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"platform\": \"string\",\n    \"home_page\": \"string\",\n    \"download_url\": \"string\",\n    \"project_url\": \"http://VIJNSAiJRiKBniUUQDnGfcxLa.kbrqf6nbNmoar3ip3RRlQrMMqXIeEYBPx-fRtYQOPuSLe0hggp4\",\n    \"project_urls\": {\n      \"key_0\": \"https://UfhEnHtgofJESlTcsgNWVuJkfZzUjqBV.kyXt7gTn6dTfSw8tLY8YYHwGVsptYMPo5YDNfLtk7LEME8mtsBZgCu7LDBvn\",\n      \"key_1\": \"http://aOIrhqtVrjMMZySicdICyUrJ.zywvAevhATV1Dc2gORqWER2WM0DOnHwnkkCmBWSKhUIkA\"\n    },\n    \"docs_url\": \"string\",\n    \"bugtrack_url\": \"string\",\n    \"requires_python\": \"string\",\n    \"requires_dist\": [\n      \"string\",\n      \"string\"\n    ],\n    \"provides_extra\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dynamic\": [\n      \"string\",\n      \"string\"\n    ],\n    \"yanked\": true,\n    \"yanked_reason\": \"string\"\n  },\n  \"last_serial\": 4798,\n  \"releases\": {\n    \"key_0\": [\n      {\n        \"filename\": \"string\",\n        \"url\": \"http://oIjRqzHKgyk.haQpGqlec+ZU0RUMXyIME\",\n        \"size\": 3634,\n        \"packagetype\": \"bdist_rpm\",\n        \"python_version\": \"string\",\n        \"requires_python\": \"string\",\n        \"upload_time\": \"2016-08-13T21:13:46.176Z\",\n        \"upload_time_iso_8601\": \"1993-02-08T16:00:28.554Z\",\n        \"comment_text\": \"string\",\n        \"digests\": {\n          \"md5\": \"string\",\n          \"sha256\": \"string\",\n          \"blake2b_256\": \"string\"\n        },\n        \"has_sig\": false,\n        \"yanked\": true,\n        \"yanked_reason\": \"string\"\n      },\n      {\n        \"filename\": \"string\",\n        \"url\": \"https://DwWNSMjbQDfkbsLYf.goqt0OZIEy02Q.48-9sicN,hA5H-sUrLt6wOY7GvLD,VG3wR\",\n        \"size\": 3670,\n        \"packagetype\": \"bdist_rpm\",\n        \"python_version\": \"string\",\n        \"requires_python\": \"string\",\n        \"upload_time\": \"2025-05-03T19:27:25.151Z\",\n        \"upload_time_iso_8601\": \"2008-11-02T14:47:27.538Z\",\n        \"comment_text\": \"string\",\n        \"digests\": {\n          \"md5\": \"string\",\n          \"sha256\": \"string\",\n          \"blake2b_256\": \"string\"\n        },\n        \"has_sig\": false,\n        \"yanked\": true,\n        \"yanked_reason\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"filename\": \"string\",\n        \"url\": \"https://RFU.zxFQnwP+kuHebtTusQgVWp9-YvixQpe2eSUbVKWJK\",\n        \"size\": 1309,\n        \"packagetype\": \"bdist_wininst\",\n        \"python_version\": \"string\",\n        \"requires_python\": \"string\",\n        \"upload_time\": \"1956-11-03T14:27:36.191Z\",\n        \"upload_time_iso_8601\": \"1969-07-28T09:43:49.001Z\",\n        \"comment_text\": \"string\",\n        \"digests\": {\n          \"md5\": \"string\",\n          \"sha256\": \"string\",\n          \"blake2b_256\": \"string\"\n        },\n        \"has_sig\": false,\n        \"yanked\": false,\n        \"yanked_reason\": \"string\"\n      },\n      {\n        \"filename\": \"string\",\n        \"url\": \"https://kNVZegqFYGKqsbEyj.kxc3eA1AqyMckAuG+WlfbyiT5uTSRc0okR4nAbf461uq\",\n        \"size\": 7320,\n        \"packagetype\": \"bdist_wheel\",\n        \"python_version\": \"string\",\n        \"requires_python\": \"string\",\n        \"upload_time\": \"1960-09-10T06:35:58.943Z\",\n        \"upload_time_iso_8601\": \"1991-11-28T05:08:08.941Z\",\n        \"comment_text\": \"string\",\n        \"digests\": {\n          \"md5\": \"string\",\n          \"sha256\": \"string\",\n          \"blake2b_256\": \"string\"\n        },\n        \"has_sig\": false,\n        \"yanked\": true,\n        \"yanked_reason\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"filename\": \"string\",\n        \"url\": \"http://DTTsijbPgZWFRBIIbr.jeziitnR+w8dYxjwd+yCUHr2FR7hrdsUxcnUdukbDVUYRDAk2sv5\",\n        \"size\": 6310,\n        \"packagetype\": \"bdist_rpm\",\n        \"python_version\": \"string\",\n        \"requires_python\": \"string\",\n        \"upload_time\": \"2009-03-21T22:51:24.422Z\",\n        \"upload_time_iso_8601\": \"1949-09-17T22:40:29.957Z\",\n        \"comment_text\": \"string\",\n        \"digests\": {\n          \"md5\": \"string\",\n          \"sha256\": \"string\",\n          \"blake2b_256\": \"string\"\n        },\n        \"has_sig\": true,\n        \"yanked\": true,\n        \"yanked_reason\": \"string\"\n      },\n      {\n        \"filename\": \"string\",\n        \"url\": \"https://guUGDbNsGklxFXAvK.bnUyBAN9hv8vbTfckawbykTzQU9FXazjImiJ.IQlJeWRMGRrV,iCNiviToyV--QBveUF0q\",\n        \"size\": 2850,\n        \"packagetype\": \"bdist_wininst\",\n        \"python_version\": \"string\",\n        \"requires_python\": \"string\",\n        \"upload_time\": \"1975-05-14T18:13:42.742Z\",\n        \"upload_time_iso_8601\": \"1956-07-24T21:42:00.809Z\",\n        \"comment_text\": \"string\",\n        \"digests\": {\n          \"md5\": \"string\",\n          \"sha256\": \"string\",\n          \"blake2b_256\": \"string\"\n        },\n        \"has_sig\": true,\n        \"yanked\": true,\n        \"yanked_reason\": \"string\"\n      }\n    ]\n  },\n  \"urls\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://ZjJoVZxKDcVgJozzcQcnK.nsoPNUGjvkLcJUbZpHyz\",\n      \"size\": 295,\n      \"packagetype\": \"bdist_egg\",\n      \"python_version\": \"string\",\n      \"requires_python\": \"string\",\n      \"upload_time\": \"2019-10-22T03:43:47.145Z\",\n      \"upload_time_iso_8601\": \"2018-05-25T09:45:05.310Z\",\n      \"comment_text\": \"string\",\n      \"digests\": {\n        \"md5\": \"string\",\n        \"sha256\": \"string\",\n        \"blake2b_256\": \"string\"\n      },\n      \"has_sig\": false,\n      \"yanked\": false,\n      \"yanked_reason\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://yDQnXObDbCuQawe.leXBnglAO9UhioWuQuN+dal.8SNlrx3gF3d1B.h9AI7HeY-lBXs7LFgP0YiYzHHscQ3gP7tOHU1dg\",\n      \"size\": 4343,\n      \"packagetype\": \"bdist_rpm\",\n      \"python_version\": \"string\",\n      \"requires_python\": \"string\",\n      \"upload_time\": \"2019-03-16T14:32:59.696Z\",\n      \"upload_time_iso_8601\": \"2016-10-03T22:02:25.216Z\",\n      \"comment_text\": \"string\",\n      \"digests\": {\n        \"md5\": \"string\",\n        \"sha256\": \"string\",\n        \"blake2b_256\": \"string\"\n      },\n      \"has_sig\": false,\n      \"yanked\": true,\n      \"yanked_reason\": \"string\"\n    }\n  ],\n  \"vulnerabilities\": [\n    {\n      \"id\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"summary\": \"string\",\n      \"details\": \"string\",\n      \"fixed_in\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"http://RaQpKTNzHtqIpOUr.zurreXWYeMofGGPeqRj.bQda,cuVIHMVqs\"\n    },\n    {\n      \"id\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"summary\": \"string\",\n      \"details\": \"string\",\n      \"fixed_in\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"http://AOVdMmCWZBSilnEwvuFBGrHryAzc.bnraAIgp3yXxSTOboI4-W.vGkgsshUP5VTCjks5A5q3q\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfc801f0-7a79-4eac-9f28-b498a735012a",
+              "name": "Project not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pypi",
+                    ":project",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) The normalized name of the Python package on PyPI."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "533dcb7d-8349-46ce-bf89-61ce6d521683",
+          "name": "Get project version metadata",
+          "request": {
+            "name": "Get project version metadata",
+            "description": {
+              "content": "Returns metadata about an individual release at a specific version. Identical to the project-level endpoint but scoped to a single version and excludes the releases key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pypi",
+                ":project",
+                ":version",
+                "json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) The normalized name of the Python package on PyPI."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) The version string of the release to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b3287b8-fce4-4ea5-b746-98f2bda09951",
+              "name": "Version metadata retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pypi",
+                    ":project",
+                    ":version",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) The normalized name of the Python package on PyPI."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version string of the release to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Entity tag for cache validation. Use with If-None-Match header for conditional requests.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"name\": \"string\",\n    \"version\": \"string\",\n    \"summary\": \"string\",\n    \"description\": \"string\",\n    \"description_content_type\": \"string\",\n    \"author\": \"string\",\n    \"author_email\": \"string\",\n    \"maintainer\": \"string\",\n    \"maintainer_email\": \"string\",\n    \"license\": \"string\",\n    \"license_expression\": \"string\",\n    \"license_files\": [\n      \"string\",\n      \"string\"\n    ],\n    \"keywords\": \"string\",\n    \"classifiers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"platform\": \"string\",\n    \"home_page\": \"string\",\n    \"download_url\": \"string\",\n    \"project_url\": \"http://O.zdatYmPWu6zhMm+eC\",\n    \"project_urls\": {\n      \"key_0\": \"http://aOgmyyQfZuxMHNzELAlHsaDfFAi.nvgnonf7qErfG7JJTiNKg,fOHq38LgKEfP77QgikPEvkEX\",\n      \"key_1\": \"https://IzpOARCskCFKoMLGzkBLLwJeo.hjtN26YKMG3wMUr,BUBau6hFlAZ6uQRJPJPUQMqk1.skTFDiZUtDOq6qwsalXhVcSOust+d8\",\n      \"key_2\": \"https://znMuMd.emXHpfKuk0FvBdcENGhcvknNEUWO0DngzG49CufrcEEri8Z9nT\",\n      \"key_3\": \"https://NvsXyhaQp.sjIZTvFrgKEzPwrw0FDuQdWzOk9PgDkNcBOTnf\"\n    },\n    \"docs_url\": \"string\",\n    \"bugtrack_url\": \"string\",\n    \"requires_python\": \"string\",\n    \"requires_dist\": [\n      \"string\",\n      \"string\"\n    ],\n    \"provides_extra\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dynamic\": [\n      \"string\",\n      \"string\"\n    ],\n    \"yanked\": true,\n    \"yanked_reason\": \"string\"\n  },\n  \"last_serial\": 4403,\n  \"urls\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://oSYBgGLjuxvCAXjrgdCN.mbwDI-9Vaa8JLiVeYc5HY2k6KVvHUZIrtiLfM-\",\n      \"size\": 4119,\n      \"packagetype\": \"bdist_wininst\",\n      \"python_version\": \"string\",\n      \"requires_python\": \"string\",\n      \"upload_time\": \"2017-02-25T13:41:00.080Z\",\n      \"upload_time_iso_8601\": \"2017-05-30T19:20:18.352Z\",\n      \"comment_text\": \"string\",\n      \"digests\": {\n        \"md5\": \"string\",\n        \"sha256\": \"string\",\n        \"blake2b_256\": \"string\"\n      },\n      \"has_sig\": false,\n      \"yanked\": false,\n      \"yanked_reason\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://xBsZkqNgOSKgoaxoffOrMzIYSgnUkGe.dnmXmEyA.X8TYcy1hNAKqpfRaJr5VF2QqlGFyjxPoS+aJHY3Pat5p4pDfe8p2h\",\n      \"size\": 8364,\n      \"packagetype\": \"bdist_rpm\",\n      \"python_version\": \"string\",\n      \"requires_python\": \"string\",\n      \"upload_time\": \"1992-03-07T12:45:14.957Z\",\n      \"upload_time_iso_8601\": \"2020-10-05T22:13:01.543Z\",\n      \"comment_text\": \"string\",\n      \"digests\": {\n        \"md5\": \"string\",\n        \"sha256\": \"string\",\n        \"blake2b_256\": \"string\"\n      },\n      \"has_sig\": true,\n      \"yanked\": false,\n      \"yanked_reason\": \"string\"\n    }\n  ],\n  \"vulnerabilities\": [\n    {\n      \"id\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"summary\": \"string\",\n      \"details\": \"string\",\n      \"fixed_in\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"https://TRJ.agjtuH5+JF3P1m9pl\"\n    },\n    {\n      \"id\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"summary\": \"string\",\n      \"details\": \"string\",\n      \"fixed_in\": [\n        \"string\",\n        \"string\"\n      ],\n      \"link\": \"http://Nlyglpl.wrhTprcnR9EDnAdpYtVAxyEGmYPfhLxZJiw7lfsxN6hNbR\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e410a3fc-535a-4e5e-9819-5f1c8e71bed5",
+              "name": "Project or version not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pypi",
+                    ":project",
+                    ":version",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) The normalized name of the Python package on PyPI."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version string of the release to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pypi.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d67dd5c0-3bfb-4b73-9a86-78003ddd0186",
+    "name": "PyPI JSON API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The PyPI JSON API provides metadata about individual Python packages hosted on the Python Package Index. It returns project-level information including the latest version, all available releases, download URLs, and hash digests for MD5, SHA256, and BLAKE2b-256. Responses are cached by CDN and support ETag headers for conditional requests.\n\nContact Support:\n Name: PyPI Support",
+      "type": "text/plain"
+    }
+  }
+}

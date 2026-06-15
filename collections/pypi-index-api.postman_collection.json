@@ -1,0 +1,294 @@
+{
+  "item": [
+    {
+      "id": "ac587c6c-5e19-4275-bfc4-d28eb50258ee",
+      "name": "Index",
+      "description": {
+        "content": "Browse the simple repository index of Python packages, listing all projects and their available distribution files.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4560b3b2-8ff7-40cb-a40d-754cd83b3f39",
+          "name": "List all projects",
+          "request": {
+            "name": "List all projects",
+            "description": {
+              "content": "Returns the root index of all projects registered on PyPI. The response can be HTML (PEP 503) or JSON (PEP 691) depending on content negotiation. The JSON format is recommended for new integrations. Each project entry includes the project name as a link to its detail page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "simple",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Alternative to the Accept header for requesting a specific response format. Useful for previewing JSON responses in a browser."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.pypi.simple.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58359716-68d3-4088-8e07-14493de9237f",
+              "name": "Project index retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "simple",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "application/vnd.pypi.simple.v1+json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Content type negotiation header. Use application/vnd.pypi.simple.v1+json for JSON responses. The default fallback is text/html per PEP 691.",
+                    "key": "Accept",
+                    "value": "application/vnd.pypi.simple.v1+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.pypi.simple.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Entity tag for cache validation.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.pypi.simple.v1+json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"api-version\": \"1.0\"\n  },\n  \"projects\": [\n    {\n      \"name\": \"string\"\n    },\n    {\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4c1c693-2353-42a7-9f00-59e5450c4cdf",
+          "name": "Get project distribution files",
+          "request": {
+            "name": "Get project distribution files",
+            "description": {
+              "content": "Returns the list of available distribution files for a given project. Each file entry includes the filename, download URL, hash digests, and optional metadata such as requires-python and data-yanked attributes. The response supports HTML (PEP 503) and JSON (PEP 691) formats.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "simple",
+                ":project",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Alternative to the Accept header for requesting a specific response format. Useful for previewing JSON responses in a browser."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) The normalized name of the Python package on PyPI."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.pypi.simple.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "141a9260-8294-4898-9726-c50195532f22",
+              "name": "Project files retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "simple",
+                    ":project",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "application/vnd.pypi.simple.v1+json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) The normalized name of the Python package on PyPI."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Content type negotiation header. Use application/vnd.pypi.simple.v1+json for JSON responses. The default fallback is text/html per PEP 691.",
+                    "key": "Accept",
+                    "value": "application/vnd.pypi.simple.v1+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.pypi.simple.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Entity tag for cache validation.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.pypi.simple.v1+json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"api-version\": \"string\"\n  },\n  \"name\": \"string\",\n  \"versions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"files\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://SvptDAChGkLFUCJqkjcYztrltL.mttpdR8YNAX0mp1rymc\",\n      \"hashes\": {\n        \"sha256\": \"string\",\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"requires-python\": \"string\",\n      \"dist-info-metadata\": true,\n      \"gpg-sig\": true,\n      \"yanked\": false,\n      \"upload-time\": \"2006-06-06T08:30:33.822Z\",\n      \"size\": 5157,\n      \"data-dist-info-metadata\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://CRvxlEVyyFDEaTeQzOzFuur.pksz8e\",\n      \"hashes\": {\n        \"sha256\": \"string\",\n        \"key_0\": \"string\"\n      },\n      \"requires-python\": \"string\",\n      \"dist-info-metadata\": true,\n      \"gpg-sig\": false,\n      \"yanked\": false,\n      \"upload-time\": \"2001-01-06T14:09:58.417Z\",\n      \"size\": 3893,\n      \"data-dist-info-metadata\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc868959-f55b-44a2-8867-6b7db42cbaea",
+              "name": "Project not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "simple",
+                    ":project",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "application/vnd.pypi.simple.v1+json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) The normalized name of the Python package on PyPI."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Content type negotiation header. Use application/vnd.pypi.simple.v1+json for JSON responses. The default fallback is text/html per PEP 691.",
+                    "key": "Accept",
+                    "value": "application/vnd.pypi.simple.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pypi.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8deb7f45-8ba5-4ab4-8389-b09139d1e54e",
+    "name": "PyPI Index API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary API that package installers like pip use to resolve and download dependencies from the Python Package Index.\n\nContact Support:\n Name: PyPI Support",
+      "type": "text/plain"
+    }
+  }
+}
