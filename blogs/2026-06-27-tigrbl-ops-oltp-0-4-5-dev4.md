@@ -1,0 +1,8 @@
+---
+title: "tigrbl-ops-oltp 0.4.5.dev4"
+url: "https://pypi.org/project/tigrbl-ops-oltp/0.4.5.dev4/"
+date: "2026-06-27"
+author: "jacob@swarmauri.com"
+feed_url: "https://pypi.org/rss/updates.xml"
+---
+Transactional OLTP operation handlers for Tigrbl CRUD, bulk, REST, JSON-RPC, and database-backed workloads.
