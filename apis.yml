@@ -135,6 +135,12 @@ apis:
       - type: OpenAPI
         url: openapi/pypi-stats-api-openapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/pypi-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/pypi-domain-security.yml
+  - type: Authentication
+    url: authentication/pypi-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/pypi
   - type: Portal
