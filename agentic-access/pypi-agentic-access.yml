@@ -1,0 +1,133 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/pypi-index-api-openapi.yml, openapi/pypi-integrity-api-openapi.yml, openapi/pypi-json-api-openapi.yml,
+  openapi/pypi-stats-api-openapi.yml, openapi/pypi-upload-api-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 11
+  by_action_class:
+    connected: 10
+    acting: 1
+  by_consequence:
+    read: 10
+    write: 1
+  human_in_the_loop_required: 0
+operations:
+- path: /simple/
+  method: get
+  operationId: listProjects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /simple/{project}/
+  method: get
+  operationId: getProjectFiles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /integrity/{project}/{version}/{filename}/provenance
+  method: get
+  operationId: getFileProvenance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pypi/{project}/json
+  method: get
+  operationId: getProjectMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pypi/{project}/{version}/json
+  method: get
+  operationId: getProjectVersionMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /packages/{package}/recent
+  method: get
+  operationId: getRecentDownloads
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /packages/{package}/overall
+  method: get
+  operationId: getOverallDownloads
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /packages/{package}/python_major
+  method: get
+  operationId: getDownloadsByPythonMajor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /packages/{package}/python_minor
+  method: get
+  operationId: getDownloadsByPythonMinor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /packages/{package}/system
+  method: get
+  operationId: getDownloadsBySystem
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /legacy/
+  method: post
+  operationId: uploadDistribution
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
