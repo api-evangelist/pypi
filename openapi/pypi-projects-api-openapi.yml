@@ -1,0 +1,341 @@
+openapi: 3.1.0
+info:
+  title: PyPI Index Downloads Projects API
+  description: The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary API that package installers like pip use to resolve and download dependencies from the Python Package Index.
+  version: '1.0'
+  contact:
+    name: PyPI Support
+    url: https://pypi.org/help/
+  termsOfService: https://pypi.org/policy/terms-of-use/
+servers:
+- url: https://pypi.org
+  description: Production Server
+tags:
+- name: Projects
+  description: Retrieve metadata about Python packages hosted on PyPI, including release information, download URLs, and vulnerability data.
+paths:
+  /pypi/{project}/json:
+    get:
+      operationId: getProjectMetadata
+      summary: Get project metadata
+      description: Returns metadata about an individual project at the latest version, including a list of all releases for that project, project URLs, and known vulnerabilities. The response includes info, last_serial, releases, urls, and vulnerabilities fields.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/ProjectName'
+      responses:
+        '200':
+          description: Project metadata retrieved successfully
+          headers:
+            ETag:
+              description: Entity tag for cache validation. Use with If-None-Match header for conditional requests.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectResponse'
+        '404':
+          description: Project not found
+  /pypi/{project}/{version}/json:
+    get:
+      operationId: getProjectVersionMetadata
+      summary: Get project version metadata
+      description: Returns metadata about an individual release at a specific version. Identical to the project-level endpoint but scoped to a single version and excludes the releases key.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/ProjectName'
+      - $ref: '#/components/parameters/VersionString'
+      responses:
+        '200':
+          description: Version metadata retrieved successfully
+          headers:
+            ETag:
+              description: Entity tag for cache validation. Use with If-None-Match header for conditional requests.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionResponse'
+        '404':
+          description: Project or version not found
+components:
+  schemas:
+    Vulnerability:
+      type: object
+      description: A known security vulnerability affecting the project release.
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the vulnerability.
+        aliases:
+          type: array
+          description: Alternative identifiers for this vulnerability, such as CVE numbers.
+          items:
+            type: string
+        summary:
+          type: string
+          description: A brief summary of the vulnerability.
+        details:
+          type: string
+          description: Detailed description of the vulnerability.
+        fixed_in:
+          type: array
+          description: List of version strings in which the vulnerability is fixed.
+          items:
+            type: string
+        link:
+          type: string
+          format: uri
+          description: A URL with more information about the vulnerability.
+    ReleaseFile:
+      type: object
+      description: Metadata about a single distribution file within a release.
+      properties:
+        filename:
+          type: string
+          description: The name of the distribution file.
+        url:
+          type: string
+          format: uri
+          description: The URL to download the distribution file.
+        size:
+          type: integer
+          description: The size of the file in bytes.
+        packagetype:
+          type: string
+          description: The type of distribution, such as sdist or bdist_wheel.
+          enum:
+          - sdist
+          - bdist_wheel
+          - bdist_egg
+          - bdist_wininst
+          - bdist_rpm
+        python_version:
+          type: string
+          description: The Python version this distribution targets.
+        requires_python:
+          type: string
+          nullable: true
+          description: The Python version requirement for this file.
+        upload_time:
+          type: string
+          format: date-time
+          description: The timestamp when the file was uploaded. Deprecated in favor of upload_time_iso_8601.
+        upload_time_iso_8601:
+          type: string
+          format: date-time
+          description: The ISO 8601 timestamp when the file was uploaded.
+        comment_text:
+          type: string
+          nullable: true
+          description: Optional comment text associated with the upload.
+        digests:
+          type: object
+          description: Hash digests for the distribution file.
+          properties:
+            md5:
+              type: string
+              description: MD5 hash digest of the file.
+            sha256:
+              type: string
+              description: SHA-256 hash digest of the file.
+            blake2b_256:
+              type: string
+              description: BLAKE2b-256 hash digest of the file.
+        has_sig:
+          type: boolean
+          description: Whether the file has a PGP signature. Deprecated, always false.
+        yanked:
+          type: boolean
+          description: Whether this file has been yanked.
+        yanked_reason:
+          type: string
+          nullable: true
+          description: The reason the file was yanked, if applicable.
+    VersionResponse:
+      type: object
+      description: Version-specific metadata response for a single release.
+      properties:
+        info:
+          $ref: '#/components/schemas/ProjectInfo'
+        last_serial:
+          type: integer
+          description: A monotonically increasing integer sequence that changes every time the project is updated.
+        urls:
+          type: array
+          description: A list of release file objects associated with this specific version.
+          items:
+            $ref: '#/components/schemas/ReleaseFile'
+        vulnerabilities:
+          type: array
+          description: Known vulnerabilities affecting this specific release.
+          items:
+            $ref: '#/components/schemas/Vulnerability'
+    ProjectInfo:
+      type: object
+      description: Core metadata about the project, sourced from the values provided at upload time.
+      properties:
+        name:
+          type: string
+          description: The name of the project.
+        version:
+          type: string
+          description: The version of the latest release.
+        summary:
+          type: string
+          description: A one-line summary of the project.
+        description:
+          type: string
+          description: The full description of the project.
+        description_content_type:
+          type: string
+          description: The content type of the description field, such as text/markdown or text/x-rst.
+        author:
+          type: string
+          description: The name of the project author.
+        author_email:
+          type: string
+          description: The email address of the project author.
+        maintainer:
+          type: string
+          nullable: true
+          description: The name of the project maintainer.
+        maintainer_email:
+          type: string
+          nullable: true
+          description: The email address of the project maintainer.
+        license:
+          type: string
+          description: The license text or identifier for the project.
+        license_expression:
+          type: string
+          nullable: true
+          description: A SPDX license expression for the project.
+        license_files:
+          type: array
+          nullable: true
+          description: List of license file paths included in the distribution.
+          items:
+            type: string
+        keywords:
+          type: string
+          nullable: true
+          description: Comma-separated keywords for the project.
+        classifiers:
+          type: array
+          description: A list of Trove classifiers for the project.
+          items:
+            type: string
+        platform:
+          type: string
+          nullable: true
+          description: The platform specification for the project.
+        home_page:
+          type: string
+          nullable: true
+          description: The URL of the project home page.
+        download_url:
+          type: string
+          nullable: true
+          description: A URL to download the project. Deprecated.
+        project_url:
+          type: string
+          format: uri
+          description: The URL of the project on PyPI.
+        project_urls:
+          type: object
+          nullable: true
+          description: A mapping of label to URL for project-related links.
+          additionalProperties:
+            type: string
+            format: uri
+        docs_url:
+          type: string
+          nullable: true
+          description: The URL of the project documentation. Deprecated, always null.
+        bugtrack_url:
+          type: string
+          nullable: true
+          description: The URL of the project bug tracker. Deprecated, always null.
+        requires_python:
+          type: string
+          nullable: true
+          description: The Python version requirement specifier for the project.
+        requires_dist:
+          type: array
+          nullable: true
+          description: A list of PEP 508 dependency specifiers.
+          items:
+            type: string
+        provides_extra:
+          type: array
+          nullable: true
+          description: A list of optional extra dependency groups provided by the project.
+          items:
+            type: string
+        dynamic:
+          type: array
+          nullable: true
+          description: A list of metadata fields that are dynamically specified.
+          items:
+            type: string
+        yanked:
+          type: boolean
+          description: Whether the release has been yanked from the index.
+        yanked_reason:
+          type: string
+          nullable: true
+          description: The reason the release was yanked, if applicable.
+    ProjectResponse:
+      type: object
+      description: Full project metadata response including all releases.
+      properties:
+        info:
+          $ref: '#/components/schemas/ProjectInfo'
+        last_serial:
+          type: integer
+          description: A monotonically increasing integer sequence that changes every time the project is updated.
+        releases:
+          type: object
+          description: A mapping of version strings to arrays of release file objects. Deprecated in favor of the Index API.
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ReleaseFile'
+        urls:
+          type: array
+          description: A list of release file objects associated with the latest version.
+          items:
+            $ref: '#/components/schemas/ReleaseFile'
+        vulnerabilities:
+          type: array
+          description: Known vulnerabilities affecting the latest release of the project.
+          items:
+            $ref: '#/components/schemas/Vulnerability'
+  parameters:
+    VersionString:
+      name: version
+      in: path
+      required: true
+      description: The version string of the release to retrieve.
+      schema:
+        type: string
+        examples:
+        - 1.0.0
+        - 2.31.0
+    ProjectName:
+      name: project
+      in: path
+      required: true
+      description: The normalized name of the Python package on PyPI.
+      schema:
+        type: string
+        examples:
+        - requests
+        - numpy
+externalDocs:
+  description: PyPI Index API Documentation
+  url: https://docs.pypi.org/api/index-api/
