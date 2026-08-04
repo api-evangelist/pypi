@@ -1,0 +1,22 @@
+{
+  "provider": "pypi",
+  "sources": [
+    "pypi-downloads-api-openapi.yml",
+    "pypi-index-api-openapi.yml",
+    "pypi-projects-api-openapi.yml",
+    "pypi-provenance-api-openapi.yml",
+    "pypi-upload-api-openapi.yml"
+  ],
+  "outputs": [
+    "pypi-downloads-api-openapi.yml",
+    "pypi-index-api-openapi.yml",
+    "pypi-projects-api-openapi.yml",
+    "pypi-provenance-api-openapi.yml",
+    "pypi-upload-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

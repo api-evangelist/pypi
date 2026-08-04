@@ -1,0 +1,188 @@
+openapi: 3.1.0
+info:
+  title: PyPI Integrity API
+  description: >-
+    The PyPI Integrity API provides access to digital attestations and
+    provenance information for Python package distribution files. It allows
+    clients to retrieve cryptographic attestation bundles and Trusted Publishing
+    metadata for individual release files, enabling verification of package
+    authenticity and supply chain integrity. The API implements PEP 740 and
+    returns provenance objects containing one or more Sigstore attestation
+    bundles along with the identity that produced them.
+  version: '1.0'
+  contact:
+    name: PyPI Support
+    url: https://pypi.org/help/
+  termsOfService: https://pypi.org/policy/terms-of-use/
+externalDocs:
+  description: PyPI Integrity API Documentation
+  url: https://docs.pypi.org/api/integrity/
+servers:
+  - url: https://pypi.org
+    description: Production Server
+tags:
+  - name: Provenance
+    description: >-
+      Retrieve digital attestations and provenance information for Python
+      package distribution files hosted on PyPI.
+paths:
+  /integrity/{project}/{version}/{filename}/provenance:
+    get:
+      operationId: getFileProvenance
+      summary: Get file provenance
+      description: >-
+        Returns the provenance object for the given distribution filename. The
+        provenance object contains one or more attestation bundles verified by
+        PyPI, along with the Trusted Publisher identity that produced them. This
+        endpoint implements PEP 740 and is currently available in JSON format
+        only.
+      tags:
+        - Provenance
+      parameters:
+        - $ref: '#/components/parameters/ProjectName'
+        - $ref: '#/components/parameters/VersionString'
+        - $ref: '#/components/parameters/Filename'
+      responses:
+        '200':
+          description: Provenance object retrieved successfully
+          content:
+            application/vnd.pypi.integrity.v1+json:
+              schema:
+                $ref: '#/components/schemas/Provenance'
+        '404':
+          description: >-
+            Project, version, filename, or provenance not found. Provenance may
+            not be available for files uploaded without attestations.
+components:
+  parameters:
+    ProjectName:
+      name: project
+      in: path
+      required: true
+      description: >-
+        The normalized name of the Python package on PyPI.
+      schema:
+        type: string
+        examples:
+          - sampleproject
+    VersionString:
+      name: version
+      in: path
+      required: true
+      description: >-
+        The version string of the release.
+      schema:
+        type: string
+        examples:
+          - '4.0.0'
+    Filename:
+      name: filename
+      in: path
+      required: true
+      description: >-
+        The exact filename of the distribution file to retrieve provenance for.
+      schema:
+        type: string
+        examples:
+          - sampleproject-4.0.0.tar.gz
+  schemas:
+    Provenance:
+      type: object
+      description: >-
+        A provenance object as defined by PEP 740, containing one or more
+        attestation bundles for a distribution file along with the Trusted
+        Publisher identity that produced them.
+      properties:
+        version:
+          type: integer
+          description: >-
+            The provenance object version. Currently always 1.
+          enum:
+            - 1
+        attestation_bundles:
+          type: array
+          description: >-
+            One or more attestation bundles, each containing the publisher
+            identity and a set of attestations for the file.
+          items:
+            $ref: '#/components/schemas/AttestationBundle'
+    AttestationBundle:
+      type: object
+      description: >-
+        A bundle of attestations from a single publisher identity.
+      properties:
+        publisher:
+          $ref: '#/components/schemas/Publisher'
+        attestations:
+          type: array
+          description: >-
+            The list of individual attestation objects in this bundle.
+          items:
+            $ref: '#/components/schemas/Attestation'
+    Publisher:
+      type: object
+      description: >-
+        The Trusted Publisher identity that produced the attestations. This
+        represents the CI/CD identity verified by PyPI through OpenID Connect.
+      properties:
+        kind:
+          type: string
+          description: >-
+            The kind of Trusted Publisher, indicating the CI/CD platform.
+          examples:
+            - GitHub
+        claims:
+          type: object
+          description: >-
+            The identity claims associated with the Trusted Publisher, such as
+            the repository and workflow information.
+          additionalProperties:
+            type: string
+        vendor-property:
+          type: string
+          nullable: true
+          description: >-
+            An optional vendor-specific property providing additional context.
+    Attestation:
+      type: object
+      description: >-
+        A single attestation for a distribution file, containing a Sigstore
+        bundle with a cryptographic signature and verification material.
+      properties:
+        version:
+          type: integer
+          description: >-
+            The attestation object version. Currently always 1.
+        verification_material:
+          type: object
+          description: >-
+            The Sigstore verification material, including the certificate and
+            transparency log entries.
+          properties:
+            certificate:
+              type: string
+              description: >-
+                The base64-encoded signing certificate from the Sigstore CA.
+            transparency_entries:
+              type: array
+              description: >-
+                Entries from the Sigstore transparency log (Rekor).
+              items:
+                type: object
+                description: >-
+                  A single transparency log entry.
+                additionalProperties: true
+        envelope:
+          type: object
+          description: >-
+            The DSSE (Dead Simple Signing Envelope) containing the signed
+            attestation statement.
+          properties:
+            statement:
+              type: string
+              description: >-
+                The base64-encoded attestation statement.
+            signature:
+              type: string
+              description: >-
+                The base64-encoded signature over the statement.
