@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PyPI Index Downloads Projects API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get project metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pypi.org/pypi/:project/json",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "The normalized name of the Python package on PyPI."
+              }
+            ]
+          },
+          "docs": "Returns metadata about an individual project at the latest version, including a list of all releases for that project, project URLs, and known vulnerabilities. The response includes info, last_serial, releases, urls, and vulnerabilities fields."
+        },
+        {
+          "info": {
+            "name": "Get project version metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pypi.org/pypi/:project/:version/json",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "The normalized name of the Python package on PyPI."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "The version string of the release to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns metadata about an individual release at a specific version. Identical to the project-level endpoint but scoped to a single version and excludes the releases key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

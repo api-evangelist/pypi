@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "f998259e-ed79-4262-bf95-3f913c9aaa0f",
+      "id": "ad23936d-646f-43de-a713-e023ce3c568f",
       "name": "Upload",
       "description": {
         "content": "Upload Python package distributions to the Python Package Index.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "68e16ccb-3a2c-4741-9fba-d560428866d5",
+          "id": "888fccc7-eba0-4937-ac1c-c790b9758f15",
           "name": "Upload a distribution file",
           "request": {
             "name": "Upload a distribution file",
@@ -148,7 +148,7 @@
                 },
                 {
                   "key": "project_urls",
-                  "value": "{\"key_0\":\"<uri>\",\"key_1\":\"<uri>\"}",
+                  "value": "{\"key_0\":\"<uri>\",\"key_1\":\"<uri>\",\"key_2\":\"<uri>\"}",
                   "type": "text",
                   "description": "Project-related URLs as label=URL pairs."
                 },
@@ -186,7 +186,7 @@
           },
           "response": [
             {
-              "id": "06302a59-7ec1-487b-bd56-c0e37a44f93a",
+              "id": "a6f8fc31-d5cb-4f6f-b0bc-de9140eaaef0",
               "name": "Distribution uploaded successfully",
               "originalRequest": {
                 "url": {
@@ -200,16 +200,6 @@
                   "query": [],
                   "variable": []
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
                 "method": "POST",
                 "body": {
                   "mode": "formdata",
@@ -382,7 +372,7 @@
                         "type": "text/plain"
                       },
                       "key": "project_urls",
-                      "value": "{\"key_0\":\"<uri>\"}",
+                      "value": "{\"key_0\":\"<uri>\",\"key_1\":\"<uri>\",\"key_2\":\"<uri>\"}",
                       "type": "text"
                     },
                     {
@@ -446,7 +436,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "0c89340a-48bf-4340-ba1a-e0a88081a5fa",
+              "id": "c890336b-844f-48e6-ab58-7502eb35a27d",
               "name": "Bad request. The upload was rejected due to invalid metadata, duplicate filename, or other validation errors.",
               "originalRequest": {
                 "url": {
@@ -460,16 +450,6 @@
                   "query": [],
                   "variable": []
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
                 "method": "POST",
                 "body": {
                   "mode": "formdata",
@@ -642,7 +622,7 @@
                         "type": "text/plain"
                       },
                       "key": "project_urls",
-                      "value": "{\"key_0\":\"<uri>\",\"key_1\":\"<uri>\"}",
+                      "value": "{\"key_0\":\"<uri>\",\"key_1\":\"<uri>\",\"key_2\":\"<uri>\"}",
                       "type": "text"
                     },
                     {
@@ -706,7 +686,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "df7efe66-4feb-4117-b7f4-cceb81e81766",
+              "id": "9295ed8c-e0ae-418d-babf-aa5550e92fc2",
               "name": "Authentication required. The request did not include valid credentials.",
               "originalRequest": {
                 "url": {
@@ -720,16 +700,6 @@
                   "query": [],
                   "variable": []
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
                 "method": "POST",
                 "body": {
                   "mode": "formdata",
@@ -902,7 +872,7 @@
                         "type": "text/plain"
                       },
                       "key": "project_urls",
-                      "value": "{\"key_0\":\"<uri>\",\"key_1\":\"<uri>\"}",
+                      "value": "{\"key_0\":\"<uri>\",\"key_1\":\"<uri>\",\"key_2\":\"<uri>\"}",
                       "type": "text"
                     },
                     {
@@ -966,7 +936,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "4c57c7ac-241c-44cc-a921-190afbfdf615",
+              "id": "1badadce-3a4b-4290-a192-80473829b595",
               "name": "Forbidden. The authenticated user does not have permission to upload to this project.",
               "originalRequest": {
                 "url": {
@@ -980,16 +950,6 @@
                   "query": [],
                   "variable": []
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
                 "method": "POST",
                 "body": {
                   "mode": "formdata",
@@ -1162,7 +1122,7 @@
                         "type": "text/plain"
                       },
                       "key": "project_urls",
-                      "value": "{\"key_0\":\"<uri>\",\"key_1\":\"<uri>\"}",
+                      "value": "{\"key_0\":\"<uri>\",\"key_1\":\"<uri>\",\"key_2\":\"<uri>\"}",
                       "type": "text"
                     },
                     {
@@ -1239,29 +1199,16 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://upload.pypi.org",
+      "value": "https://pypi.org",
       "key": "baseUrl"
     }
   ],
-  "auth": {
-    "type": "basic",
-    "basic": [
-      {
-        "key": "username",
-        "value": "{{basicAuthUsername}}"
-      },
-      {
-        "key": "password",
-        "value": "{{basicAuthPassword}}"
-      }
-    ]
-  },
   "info": {
-    "_postman_id": "5a783ece-3aa7-4cd8-9170-84d9d62e749d",
-    "name": "PyPI Upload API",
+    "_postman_id": "3970c920-fecd-4a58-9923-03b76ccec53d",
+    "name": "PyPI Index Downloads Upload API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "The PyPI Upload API is the endpoint used by tools like twine and build frontends to publish Python package distributions to the Python Package Index. Served at upload.pypi.org, it emulates the legacy PyPI upload interface and accepts source distributions and wheel files along with their metadata via multipart form data. The API also supports attaching PEP 740 digital attestations to uploads, which PyPI will verify before accepting. Authentication is handled via API tokens or Trusted Publishing workflows using OpenID Connect.\n\nContact Support:\n Name: PyPI Support",
+      "content": "The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary API that package installers like pip use to resolve and download dependencies from the Python Package Index.\n\nContact Support:\n Name: PyPI Support",
       "type": "text/plain"
     }
   }

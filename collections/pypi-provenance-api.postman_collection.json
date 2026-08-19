@@ -1,0 +1,209 @@
+{
+  "item": [
+    {
+      "id": "a73d43ec-8620-4edd-9698-2c65b86df9ea",
+      "name": "Provenance",
+      "description": {
+        "content": "Retrieve digital attestations and provenance information for Python package distribution files hosted on PyPI.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9f30859-e823-41a2-9ae0-f79fc8581169",
+          "name": "Get file provenance",
+          "request": {
+            "name": "Get file provenance",
+            "description": {
+              "content": "Returns the provenance object for the given distribution filename. The provenance object contains one or more attestation bundles verified by PyPI, along with the Trusted Publisher identity that produced them. This endpoint implements PEP 740 and is currently available in JSON format only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrity",
+                ":project",
+                ":version",
+                ":filename",
+                "provenance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) The normalized name of the Python package on PyPI."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) The version string of the release."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) The exact filename of the distribution file to retrieve provenance for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.pypi.integrity.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1ef2752c-53ee-44f8-b5e7-a111a45de50c",
+              "name": "Provenance object retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrity",
+                    ":project",
+                    ":version",
+                    ":filename",
+                    "provenance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) The normalized name of the Python package on PyPI."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version string of the release."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) The exact filename of the distribution file to retrieve provenance for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.pypi.integrity.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.pypi.integrity.v1+json"
+                }
+              ],
+              "body": "{\n  \"version\": 1,\n  \"attestation_bundles\": [\n    {\n      \"publisher\": {\n        \"kind\": \"GitHub\",\n        \"claims\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"vendor-property\": \"string\"\n      },\n      \"attestations\": [\n        {\n          \"version\": 5892,\n          \"verification_material\": {\n            \"certificate\": \"string\",\n            \"transparency_entries\": [\n              {\n                \"key_0\": \"string\"\n              },\n              {\n                \"key_0\": 5331.772314841589\n              }\n            ]\n          },\n          \"envelope\": {\n            \"statement\": \"string\",\n            \"signature\": \"string\"\n          }\n        },\n        {\n          \"version\": 9241,\n          \"verification_material\": {\n            \"certificate\": \"string\",\n            \"transparency_entries\": [\n              {\n                \"key_0\": \"string\",\n                \"key_1\": 467.9304398495343\n              },\n              {\n                \"key_0\": \"string\"\n              }\n            ]\n          },\n          \"envelope\": {\n            \"statement\": \"string\",\n            \"signature\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"publisher\": {\n        \"kind\": \"GitHub\",\n        \"claims\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"vendor-property\": \"string\"\n      },\n      \"attestations\": [\n        {\n          \"version\": 1703,\n          \"verification_material\": {\n            \"certificate\": \"string\",\n            \"transparency_entries\": [\n              {\n                \"key_0\": \"string\"\n              },\n              {\n                \"key_0\": 6471.667557740298\n              }\n            ]\n          },\n          \"envelope\": {\n            \"statement\": \"string\",\n            \"signature\": \"string\"\n          }\n        },\n        {\n          \"version\": 1330,\n          \"verification_material\": {\n            \"certificate\": \"string\",\n            \"transparency_entries\": [\n              {\n                \"key_0\": true,\n                \"key_1\": 5786.365687432566\n              },\n              {\n                \"key_0\": 5129.6170078709865,\n                \"key_1\": 5583.889632631452,\n                \"key_2\": \"string\"\n              }\n            ]\n          },\n          \"envelope\": {\n            \"statement\": \"string\",\n            \"signature\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bea1fb3-236e-4198-b766-cd74224fc2a2",
+              "name": "Project, version, filename, or provenance not found. Provenance may not be available for files uploaded without attestations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrity",
+                    ":project",
+                    ":version",
+                    ":filename",
+                    "provenance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) The normalized name of the Python package on PyPI."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version string of the release."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) The exact filename of the distribution file to retrieve provenance for."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pypi.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "12544de4-47cf-4258-ab2e-026643d5aa9f",
+    "name": "PyPI Index Downloads Provenance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary API that package installers like pip use to resolve and download dependencies from the Python Package Index.\n\nContact Support:\n Name: PyPI Support",
+      "type": "text/plain"
+    }
+  }
+}

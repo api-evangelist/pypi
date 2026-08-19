@@ -1,15 +1,8 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "PyPI Upload API",
+    "name": "PyPI Index Downloads Upload API",
     "version": "1.0"
-  },
-  "request": {
-    "auth": {
-      "type": "basic",
-      "username": "{{username}}",
-      "password": "{{password}}"
-    }
   },
   "items": [
     {
@@ -25,7 +18,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://upload.pypi.org/legacy/",
+            "url": "https://pypi.org/legacy/",
             "body": {
               "type": "multipart-form",
               "data": []

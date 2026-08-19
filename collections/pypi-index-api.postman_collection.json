@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "ac587c6c-5e19-4275-bfc4-d28eb50258ee",
+      "id": "104e8cfa-0035-488a-9a6c-f42464f22d0b",
       "name": "Index",
       "description": {
         "content": "Browse the simple repository index of Python packages, listing all projects and their available distribution files.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "4560b3b2-8ff7-40cb-a40d-754cd83b3f39",
+          "id": "6cf25060-56e8-44ff-858c-11c2111fb7c6",
           "name": "List all projects",
           "request": {
             "name": "List all projects",
@@ -46,7 +46,7 @@
           },
           "response": [
             {
-              "id": "58359716-68d3-4088-8e07-14493de9237f",
+              "id": "365373bd-6258-4ebd-ab99-4fc39f8fd731",
               "name": "Project index retrieved successfully",
               "originalRequest": {
                 "url": {
@@ -105,7 +105,7 @@
           }
         },
         {
-          "id": "a4c1c693-2353-42a7-9f00-59e5450c4cdf",
+          "id": "9c1e78a3-6af9-4490-a782-f273225e5dad",
           "name": "Get project distribution files",
           "request": {
             "name": "Get project distribution files",
@@ -151,7 +151,7 @@
           },
           "response": [
             {
-              "id": "141a9260-8294-4898-9726-c50195532f22",
+              "id": "a3d4132a-906c-4bc5-ab63-aca86c148c68",
               "name": "Project files retrieved successfully",
               "originalRequest": {
                 "url": {
@@ -208,12 +208,12 @@
                   "value": "application/vnd.pypi.simple.v1+json"
                 }
               ],
-              "body": "{\n  \"meta\": {\n    \"api-version\": \"string\"\n  },\n  \"name\": \"string\",\n  \"versions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"files\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://SvptDAChGkLFUCJqkjcYztrltL.mttpdR8YNAX0mp1rymc\",\n      \"hashes\": {\n        \"sha256\": \"string\",\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"requires-python\": \"string\",\n      \"dist-info-metadata\": true,\n      \"gpg-sig\": true,\n      \"yanked\": false,\n      \"upload-time\": \"2006-06-06T08:30:33.822Z\",\n      \"size\": 5157,\n      \"data-dist-info-metadata\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://CRvxlEVyyFDEaTeQzOzFuur.pksz8e\",\n      \"hashes\": {\n        \"sha256\": \"string\",\n        \"key_0\": \"string\"\n      },\n      \"requires-python\": \"string\",\n      \"dist-info-metadata\": true,\n      \"gpg-sig\": false,\n      \"yanked\": false,\n      \"upload-time\": \"2001-01-06T14:09:58.417Z\",\n      \"size\": 3893,\n      \"data-dist-info-metadata\": false\n    }\n  ]\n}",
+              "body": "{\n  \"meta\": {\n    \"api-version\": \"string\"\n  },\n  \"name\": \"string\",\n  \"versions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"files\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://QSdzPV.kludizfp.KCzxxZXni6DnhKKb3I,VxXwk+wSJC-n8YoT37,NI3WOIhD,wzeXsHo2OjV\",\n      \"hashes\": {\n        \"sha256\": \"string\"\n      },\n      \"requires-python\": \"string\",\n      \"dist-info-metadata\": false,\n      \"gpg-sig\": false,\n      \"yanked\": true,\n      \"upload-time\": \"1991-06-22T23:58:13.414Z\",\n      \"size\": 7121,\n      \"data-dist-info-metadata\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://GCxBxf.vgxmS69IgloUUyv5Iqzi44admFThUSlWoeyf0FCBj+ZTXCL\",\n      \"hashes\": {\n        \"sha256\": \"string\",\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"requires-python\": \"string\",\n      \"dist-info-metadata\": true,\n      \"gpg-sig\": true,\n      \"yanked\": false,\n      \"upload-time\": \"1993-07-28T13:44:54.829Z\",\n      \"size\": 8978,\n      \"data-dist-info-metadata\": false\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "dc868959-f55b-44a2-8867-6b7db42cbaea",
+              "id": "d44188a4-96b3-4ebf-bfee-b9b481131c08",
               "name": "Project not found",
               "originalRequest": {
                 "url": {
@@ -283,8 +283,8 @@
     }
   ],
   "info": {
-    "_postman_id": "8deb7f45-8ba5-4ab4-8389-b09139d1e54e",
-    "name": "PyPI Index API",
+    "_postman_id": "d1d7eaa4-fc92-40d5-8cf2-553f525896d4",
+    "name": "PyPI Downloads Index API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary API that package installers like pip use to resolve and download dependencies from the Python Package Index.\n\nContact Support:\n Name: PyPI Support",

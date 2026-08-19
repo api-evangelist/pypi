@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "PyPI Index API",
+    "name": "PyPI Downloads Index API",
     "version": "1.0"
   },
   "items": [

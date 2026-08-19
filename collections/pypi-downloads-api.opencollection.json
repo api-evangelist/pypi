@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PyPI Index Downloads API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Downloads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get recent download counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pypi.org/packages/:package/recent",
+            "params": [
+              {
+                "name": "package",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Python package to retrieve download statistics for."
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Filter to a specific time period. If omitted, returns all three periods."
+              }
+            ]
+          },
+          "docs": "Retrieves the aggregate download quantities for the last day, last week, and last month for the specified package. This provides a quick overview of recent download activity without a full time series."
+        },
+        {
+          "info": {
+            "name": "Get overall download time series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pypi.org/packages/:package/overall",
+            "params": [
+              {
+                "name": "package",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Python package to retrieve download statistics for."
+              },
+              {
+                "name": "mirrors",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether downloads from known mirrors are included. Use true to include only mirror downloads, false to exclude them."
+              }
+            ]
+          },
+          "docs": "Retrieves the aggregate daily download time series for the specified package, with or without mirror downloads included. Time series data is retained for 180 days."
+        },
+        {
+          "info": {
+            "name": "Get downloads by Python major version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pypi.org/packages/:package/python_major",
+            "params": [
+              {
+                "name": "package",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Python package to retrieve download statistics for."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Filter to a specific Python major version. If omitted, returns all versions including null."
+              }
+            ]
+          },
+          "docs": "Retrieves the aggregate daily download time series broken down by Python major version number (e.g., 2 or 3). Time series data is retained for 180 days."
+        },
+        {
+          "info": {
+            "name": "Get downloads by Python minor version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pypi.org/packages/:package/python_minor",
+            "params": [
+              {
+                "name": "package",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Python package to retrieve download statistics for."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Filter to a specific Python minor version. If omitted, returns all versions including null."
+              }
+            ]
+          },
+          "docs": "Retrieves the aggregate daily download time series broken down by Python minor version number (e.g., 2.7 or 3.11). Time series data is retained for 180 days."
+        },
+        {
+          "info": {
+            "name": "Get downloads by operating system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pypi.org/packages/:package/system",
+            "params": [
+              {
+                "name": "package",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Python package to retrieve download statistics for."
+              },
+              {
+                "name": "os",
+                "value": "",
+                "type": "query",
+                "description": "Filter to a specific operating system. If omitted, returns all operating systems including null."
+              }
+            ]
+          },
+          "docs": "Retrieves the aggregate daily download time series broken down by operating system (Windows, Linux, Darwin, or other). Time series data is retained for 180 days."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

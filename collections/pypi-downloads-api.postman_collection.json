@@ -1,0 +1,762 @@
+{
+  "item": [
+    {
+      "id": "f8a4f2f1-cc85-4b6c-8c1c-9f37cb66143d",
+      "name": "Downloads",
+      "description": {
+        "content": "Retrieve aggregate download statistics and time series data for Python packages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9fb44ec6-960a-46f3-b2dc-21926e7acc15",
+          "name": "Get recent download counts",
+          "request": {
+            "name": "Get recent download counts",
+            "description": {
+              "content": "Retrieves the aggregate download quantities for the last day, last week, and last month for the specified package. This provides a quick overview of recent download activity without a full time series.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "packages",
+                ":package",
+                "recent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "Filter to a specific time period. If omitted, returns all three periods."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package",
+                  "description": "(Required) The name of the Python package to retrieve download statistics for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "071bddef-e60a-4498-9c93-f36b7798ea7d",
+              "name": "Recent download counts retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "recent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"last_day\": 7393,\n    \"last_week\": 9742,\n    \"last_month\": 801\n  },\n  \"package\": \"string\",\n  \"type\": \"recent_downloads\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91c0093d-48e3-4dc8-a1d0-1500ce98b1ea",
+              "name": "Package not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "recent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb6b5232-980e-4485-bc93-da8dcc7849fc",
+          "name": "Get overall download time series",
+          "request": {
+            "name": "Get overall download time series",
+            "description": {
+              "content": "Retrieves the aggregate daily download time series for the specified package, with or without mirror downloads included. Time series data is retained for 180 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "packages",
+                ":package",
+                "overall"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mirrors",
+                  "value": "<string>",
+                  "description": "Filter by whether downloads from known mirrors are included. Use true to include only mirror downloads, false to exclude them."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package",
+                  "description": "(Required) The name of the Python package to retrieve download statistics for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21ca5356-0494-4966-b437-6b4833a3155d",
+              "name": "Overall download time series retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "overall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mirrors",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"category\": \"string\",\n      \"date\": \"1995-03-05\",\n      \"downloads\": 5154\n    },\n    {\n      \"category\": \"string\",\n      \"date\": \"1956-07-03\",\n      \"downloads\": 287\n    }\n  ],\n  \"package\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a484e6a6-cfc9-43e0-a337-188f30879cc8",
+              "name": "Package not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "overall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mirrors",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "036b43f7-90ad-4c6d-9a3f-4ff679a778b2",
+          "name": "Get downloads by Python major version",
+          "request": {
+            "name": "Get downloads by Python major version",
+            "description": {
+              "content": "Retrieves the aggregate daily download time series broken down by Python major version number (e.g., 2 or 3). Time series data is retained for 180 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "packages",
+                ":package",
+                "python_major"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Filter to a specific Python major version. If omitted, returns all versions including null."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package",
+                  "description": "(Required) The name of the Python package to retrieve download statistics for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60b05e9a-d5d8-49da-9010-fa21f15f7668",
+              "name": "Downloads by Python major version retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "python_major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "2"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"category\": \"string\",\n      \"date\": \"1995-03-05\",\n      \"downloads\": 5154\n    },\n    {\n      \"category\": \"string\",\n      \"date\": \"1956-07-03\",\n      \"downloads\": 287\n    }\n  ],\n  \"package\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cb7e849-890c-43c0-bab4-fe898b9732dd",
+              "name": "Package not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "python_major"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "2"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e298d7b-3ca3-4fac-8d60-48a3fa269127",
+          "name": "Get downloads by Python minor version",
+          "request": {
+            "name": "Get downloads by Python minor version",
+            "description": {
+              "content": "Retrieves the aggregate daily download time series broken down by Python minor version number (e.g., 2.7 or 3.11). Time series data is retained for 180 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "packages",
+                ":package",
+                "python_minor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Filter to a specific Python minor version. If omitted, returns all versions including null."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package",
+                  "description": "(Required) The name of the Python package to retrieve download statistics for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe4e8e7c-b5f4-4aab-a455-5476cb939281",
+              "name": "Downloads by Python minor version retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "python_minor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "2.7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"category\": \"string\",\n      \"date\": \"1995-03-05\",\n      \"downloads\": 5154\n    },\n    {\n      \"category\": \"string\",\n      \"date\": \"1956-07-03\",\n      \"downloads\": 287\n    }\n  ],\n  \"package\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a207044c-f698-4ab0-b6f0-6aec3633848b",
+              "name": "Package not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "python_minor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "2.7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6de86da3-0bbf-44e4-a555-b3a810d52ec6",
+          "name": "Get downloads by operating system",
+          "request": {
+            "name": "Get downloads by operating system",
+            "description": {
+              "content": "Retrieves the aggregate daily download time series broken down by operating system (Windows, Linux, Darwin, or other). Time series data is retained for 180 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "packages",
+                ":package",
+                "system"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "os",
+                  "value": "<string>",
+                  "description": "Filter to a specific operating system. If omitted, returns all operating systems including null."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package",
+                  "description": "(Required) The name of the Python package to retrieve download statistics for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73452919-321a-4f37-b56e-b4d522ba45bb",
+              "name": "Downloads by operating system retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "system"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "os",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"category\": \"string\",\n      \"date\": \"1995-03-05\",\n      \"downloads\": 5154\n    },\n    {\n      \"category\": \"string\",\n      \"date\": \"1956-07-03\",\n      \"downloads\": 287\n    }\n  ],\n  \"package\": \"string\",\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b60bad7-e3ce-4395-bd04-816399c417f1",
+              "name": "Package not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "packages",
+                    ":package",
+                    "system"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "os",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package",
+                      "description": "(Required) The name of the Python package to retrieve download statistics for."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pypi.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "63b905ae-5c2b-4b83-bcd4-b5c46c007987",
+    "name": "PyPI Index Downloads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary API that package installers like pip use to resolve and download dependencies from the Python Package Index.\n\nContact Support:\n Name: PyPI Support",
+      "type": "text/plain"
+    }
+  }
+}
