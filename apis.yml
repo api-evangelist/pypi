@@ -22,6 +22,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pypi.png
 tags:
   - Developer Tools
+  - Open-Source
+  - Package Management
+  - Packages
+  - Python
+tags_raw:
+  - Developer Tools
   - Open Source
   - Package Management
   - Packages
@@ -110,6 +116,8 @@ apis:
     and vulnerability data.
   humanURL: https://docs.pypi.org/api/json/
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
