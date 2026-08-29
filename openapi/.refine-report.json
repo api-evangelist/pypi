@@ -1,22 +1,29 @@
 {
   "provider": "pypi",
   "sources": [
-    "pypi-downloads-api-openapi.yml",
-    "pypi-index-api-openapi.yml",
-    "pypi-projects-api-openapi.yml",
-    "pypi-provenance-api-openapi.yml",
-    "pypi-upload-api-openapi.yml"
+    "_original/pypi-integrity-api-openapi.yml",
+    "_original/pypi-json-api-openapi.yml",
+    "_original/pypi-stats-api-openapi.yml"
   ],
   "outputs": [
-    "pypi-downloads-api-openapi.yml",
-    "pypi-index-api-openapi.yml",
-    "pypi-projects-api-openapi.yml",
     "pypi-provenance-api-openapi.yml",
-    "pypi-upload-api-openapi.yml"
+    "pypi-projects-api-openapi.yml",
+    "pypi-downloads-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "pypi-integrity-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "pypi-json-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "pypi-stats-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "pypi-downloads-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pypi-index-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pypi-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pypi-provenance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pypi-upload-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

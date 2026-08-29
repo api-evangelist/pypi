@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: PyPI Index Downloads Projects API
-  description: The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary API that package installers like pip use to resolve and download dependencies from the Python Package Index.
+  title: PyPI JSON Projects API
+  description: The PyPI JSON API provides metadata about individual Python packages hosted on the Python Package Index. It returns project-level information including the latest version, all available releases, download URLs, and hash digests for MD5, SHA256, and BLAKE2b-256. Responses are cached by CDN and support ETag headers for conditional requests.
   version: '1.0'
   contact:
     name: PyPI Support
@@ -62,7 +62,54 @@ paths:
         '404':
           description: Project or version not found
 components:
+  parameters:
+    VersionString:
+      name: version
+      in: path
+      required: true
+      description: The version string of the release to retrieve.
+      schema:
+        type: string
+        examples:
+        - 1.0.0
+        - 2.31.0
+    ProjectName:
+      name: project
+      in: path
+      required: true
+      description: The normalized name of the Python package on PyPI.
+      schema:
+        type: string
+        examples:
+        - requests
+        - numpy
   schemas:
+    ProjectResponse:
+      type: object
+      description: Full project metadata response including all releases.
+      properties:
+        info:
+          $ref: '#/components/schemas/ProjectInfo'
+        last_serial:
+          type: integer
+          description: A monotonically increasing integer sequence that changes every time the project is updated.
+        releases:
+          type: object
+          description: A mapping of version strings to arrays of release file objects. Deprecated in favor of the Index API.
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ReleaseFile'
+        urls:
+          type: array
+          description: A list of release file objects associated with the latest version.
+          items:
+            $ref: '#/components/schemas/ReleaseFile'
+        vulnerabilities:
+          type: array
+          description: Known vulnerabilities affecting the latest release of the project.
+          items:
+            $ref: '#/components/schemas/Vulnerability'
     Vulnerability:
       type: object
       description: A known security vulnerability affecting the project release.
@@ -155,25 +202,6 @@ components:
           type: string
           nullable: true
           description: The reason the file was yanked, if applicable.
-    VersionResponse:
-      type: object
-      description: Version-specific metadata response for a single release.
-      properties:
-        info:
-          $ref: '#/components/schemas/ProjectInfo'
-        last_serial:
-          type: integer
-          description: A monotonically increasing integer sequence that changes every time the project is updated.
-        urls:
-          type: array
-          description: A list of release file objects associated with this specific version.
-          items:
-            $ref: '#/components/schemas/ReleaseFile'
-        vulnerabilities:
-          type: array
-          description: Known vulnerabilities affecting this specific release.
-          items:
-            $ref: '#/components/schemas/Vulnerability'
     ProjectInfo:
       type: object
       description: Core metadata about the project, sourced from the values provided at upload time.
@@ -289,53 +317,25 @@ components:
           type: string
           nullable: true
           description: The reason the release was yanked, if applicable.
-    ProjectResponse:
+    VersionResponse:
       type: object
-      description: Full project metadata response including all releases.
+      description: Version-specific metadata response for a single release.
       properties:
         info:
           $ref: '#/components/schemas/ProjectInfo'
         last_serial:
           type: integer
           description: A monotonically increasing integer sequence that changes every time the project is updated.
-        releases:
-          type: object
-          description: A mapping of version strings to arrays of release file objects. Deprecated in favor of the Index API.
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ReleaseFile'
         urls:
           type: array
-          description: A list of release file objects associated with the latest version.
+          description: A list of release file objects associated with this specific version.
           items:
             $ref: '#/components/schemas/ReleaseFile'
         vulnerabilities:
           type: array
-          description: Known vulnerabilities affecting the latest release of the project.
+          description: Known vulnerabilities affecting this specific release.
           items:
             $ref: '#/components/schemas/Vulnerability'
-  parameters:
-    VersionString:
-      name: version
-      in: path
-      required: true
-      description: The version string of the release to retrieve.
-      schema:
-        type: string
-        examples:
-        - 1.0.0
-        - 2.31.0
-    ProjectName:
-      name: project
-      in: path
-      required: true
-      description: The normalized name of the Python package on PyPI.
-      schema:
-        type: string
-        examples:
-        - requests
-        - numpy
 externalDocs:
-  description: PyPI Index API Documentation
-  url: https://docs.pypi.org/api/index-api/
+  description: PyPI JSON API Documentation
+  url: https://docs.pypi.org/api/json/

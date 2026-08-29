@@ -1,14 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: PyPI Index Downloads API
-  description: The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary API that package installers like pip use to resolve and download dependencies from the Python Package Index.
+  title: PyPI Stats Downloads API
+  description: The PyPI Stats API provides aggregate download statistics and time series data for Python packages hosted on PyPI. It offers JSON endpoints for querying download counts broken down by Python version, operating system, and time period. Time series data is retained for 180 days and all download statistics are updated once daily. The API is hosted at pypistats.org and serves as the primary programmatic interface for analyzing Python package adoption and download trends across the ecosystem.
   version: '1.0'
   contact:
-    name: PyPI Support
-    url: https://pypi.org/help/
-  termsOfService: https://pypi.org/policy/terms-of-use/
+    name: PyPI Stats
+    url: https://pypistats.org/
+  termsOfService: https://pypistats.org/
 servers:
-- url: https://pypi.org
+- url: https://pypistats.org/api
   description: Production Server
 tags:
 - name: Downloads
@@ -166,21 +166,21 @@ components:
         - requests
         - numpy
   schemas:
-    DownloadTimeSeries:
+    DownloadRecord:
       type: object
-      description: Daily download time series data, optionally broken down by category.
+      description: A single daily download count record.
       properties:
-        data:
-          type: array
-          description: Array of daily download count records.
-          items:
-            $ref: '#/components/schemas/DownloadRecord'
-        package:
+        category:
           type: string
-          description: The name of the package.
-        type:
+          nullable: true
+          description: The category for this record, such as a Python version number, operating system name, or mirror inclusion flag. Null when no category breakdown is applied.
+        date:
           type: string
-          description: The type of statistics returned, such as overall_downloads, python_major_downloads, python_minor_downloads, or system_downloads.
+          format: date
+          description: The date of the download count in YYYY-MM-DD format.
+        downloads:
+          type: integer
+          description: The number of downloads on this date for this category.
     RecentDownloads:
       type: object
       description: Aggregate download counts for the last day, week, and month.
@@ -209,21 +209,21 @@ components:
           description: The type of statistics returned.
           examples:
           - recent_downloads
-    DownloadRecord:
+    DownloadTimeSeries:
       type: object
-      description: A single daily download count record.
+      description: Daily download time series data, optionally broken down by category.
       properties:
-        category:
+        data:
+          type: array
+          description: Array of daily download count records.
+          items:
+            $ref: '#/components/schemas/DownloadRecord'
+        package:
           type: string
-          nullable: true
-          description: The category for this record, such as a Python version number, operating system name, or mirror inclusion flag. Null when no category breakdown is applied.
-        date:
+          description: The name of the package.
+        type:
           type: string
-          format: date
-          description: The date of the download count in YYYY-MM-DD format.
-        downloads:
-          type: integer
-          description: The number of downloads on this date for this category.
+          description: The type of statistics returned, such as overall_downloads, python_major_downloads, python_minor_downloads, or system_downloads.
 externalDocs:
-  description: PyPI Index API Documentation
-  url: https://docs.pypi.org/api/index-api/
+  description: PyPI Stats API Documentation
+  url: https://pypistats.org/api/

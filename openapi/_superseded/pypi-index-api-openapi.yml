@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: PyPI Downloads Index API
   description: The PyPI Index API implements the PEP 503 (HTML) and PEP 691 (JSON) simple repository standards for discovering and downloading Python packages. It provides a machine-readable index of all registered projects and their available distribution files. The API is available in both HTML and JSON formats, with JSON recommended for new integrations. This is the primary API that package installers like pip use to resolve and download dependencies from the Python Package Index.
@@ -70,7 +70,60 @@ paths:
         '404':
           description: Project not found
 components:
+  parameters:
+    FormatQuery:
+      name: format
+      in: query
+      required: false
+      description: Alternative to the Accept header for requesting a specific response format. Useful for previewing JSON responses in a browser.
+      schema:
+        type: string
+        examples:
+        - application/vnd.pypi.simple.v1+json
+    ProjectName:
+      name: project
+      in: path
+      required: true
+      description: The normalized name of the Python package on PyPI.
+      schema:
+        type: string
+        examples:
+        - requests
+        - numpy
+    AcceptHeader:
+      name: Accept
+      in: header
+      required: false
+      description: Content type negotiation header. Use application/vnd.pypi.simple.v1+json for JSON responses. The default fallback is text/html per PEP 691.
+      schema:
+        type: string
+        default: text/html
+        examples:
+        - application/vnd.pypi.simple.v1+json
   schemas:
+    ProjectIndex:
+      type: object
+      description: The root index listing all projects registered on PyPI in JSON format per PEP 691.
+      properties:
+        meta:
+          type: object
+          description: Metadata about the API response.
+          properties:
+            api-version:
+              type: string
+              description: The version of the Simple API being used.
+              examples:
+              - '1.0'
+              - '1.1'
+        projects:
+          type: array
+          description: List of all registered projects on PyPI.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The normalized name of the project.
     FileEntry:
       type: object
       description: A single distribution file entry with download URL, hash digests, and metadata.
@@ -151,59 +204,6 @@ components:
           description: List of distribution files available for download.
           items:
             $ref: '#/components/schemas/FileEntry'
-    ProjectIndex:
-      type: object
-      description: The root index listing all projects registered on PyPI in JSON format per PEP 691.
-      properties:
-        meta:
-          type: object
-          description: Metadata about the API response.
-          properties:
-            api-version:
-              type: string
-              description: The version of the Simple API being used.
-              examples:
-              - '1.0'
-              - '1.1'
-        projects:
-          type: array
-          description: List of all registered projects on PyPI.
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-                description: The normalized name of the project.
-  parameters:
-    ProjectName:
-      name: project
-      in: path
-      required: true
-      description: The normalized name of the Python package on PyPI.
-      schema:
-        type: string
-        examples:
-        - requests
-        - numpy
-    AcceptHeader:
-      name: Accept
-      in: header
-      required: false
-      description: Content type negotiation header. Use application/vnd.pypi.simple.v1+json for JSON responses. The default fallback is text/html per PEP 691.
-      schema:
-        type: string
-        default: text/html
-        examples:
-        - application/vnd.pypi.simple.v1+json
-    FormatQuery:
-      name: format
-      in: query
-      required: false
-      description: Alternative to the Accept header for requesting a specific response format. Useful for previewing JSON responses in a browser.
-      schema:
-        type: string
-        examples:
-        - application/vnd.pypi.simple.v1+json
 externalDocs:
   description: PyPI Index API Documentation
   url: https://docs.pypi.org/api/index-api/
