@@ -12,17 +12,17 @@
       "source": "https://pypi.org/rss/updates.xml",
       "feed_url": "https://pypi.org/rss/updates.xml",
       "title": "",
-      "saved": 60,
+      "saved": 28,
       "method": "feed"
     },
     {
       "source": "https://pypi.org/help/",
       "feed_url": "https://pypi.org/rss/updates.xml",
       "title": "",
-      "saved": 37,
+      "saved": 60,
       "method": "discovered"
     }
   ],
-  "post_count": 1667,
-  "fetched": "2026-08-22T20:20:02Z"
+  "post_count": 1855,
+  "fetched": "2026-08-30T22:33:40Z"
 }
