@@ -60,6 +60,12 @@ apis:
     tools, and automation workflows to stay informed about Python package ecosystem changes.
   humanURL: https://docs.pypi.org/api/feeds/
   tags:
+  - Feed
+  - Packages
+  - Python
+  - RSS
+  - Updates
+  tags_raw:
   - Feeds
   - Packages
   - Python
