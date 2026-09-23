@@ -62,81 +62,7 @@ paths:
         '404':
           description: Project or version not found
 components:
-  parameters:
-    VersionString:
-      name: version
-      in: path
-      required: true
-      description: The version string of the release to retrieve.
-      schema:
-        type: string
-        examples:
-        - 1.0.0
-        - 2.31.0
-    ProjectName:
-      name: project
-      in: path
-      required: true
-      description: The normalized name of the Python package on PyPI.
-      schema:
-        type: string
-        examples:
-        - requests
-        - numpy
   schemas:
-    ProjectResponse:
-      type: object
-      description: Full project metadata response including all releases.
-      properties:
-        info:
-          $ref: '#/components/schemas/ProjectInfo'
-        last_serial:
-          type: integer
-          description: A monotonically increasing integer sequence that changes every time the project is updated.
-        releases:
-          type: object
-          description: A mapping of version strings to arrays of release file objects. Deprecated in favor of the Index API.
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ReleaseFile'
-        urls:
-          type: array
-          description: A list of release file objects associated with the latest version.
-          items:
-            $ref: '#/components/schemas/ReleaseFile'
-        vulnerabilities:
-          type: array
-          description: Known vulnerabilities affecting the latest release of the project.
-          items:
-            $ref: '#/components/schemas/Vulnerability'
-    Vulnerability:
-      type: object
-      description: A known security vulnerability affecting the project release.
-      properties:
-        id:
-          type: string
-          description: The unique identifier for the vulnerability.
-        aliases:
-          type: array
-          description: Alternative identifiers for this vulnerability, such as CVE numbers.
-          items:
-            type: string
-        summary:
-          type: string
-          description: A brief summary of the vulnerability.
-        details:
-          type: string
-          description: Detailed description of the vulnerability.
-        fixed_in:
-          type: array
-          description: List of version strings in which the vulnerability is fixed.
-          items:
-            type: string
-        link:
-          type: string
-          format: uri
-          description: A URL with more information about the vulnerability.
     ReleaseFile:
       type: object
       description: Metadata about a single distribution file within a release.
@@ -202,6 +128,52 @@ components:
           type: string
           nullable: true
           description: The reason the file was yanked, if applicable.
+    Vulnerability:
+      type: object
+      description: A known security vulnerability affecting the project release.
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the vulnerability.
+        aliases:
+          type: array
+          description: Alternative identifiers for this vulnerability, such as CVE numbers.
+          items:
+            type: string
+        summary:
+          type: string
+          description: A brief summary of the vulnerability.
+        details:
+          type: string
+          description: Detailed description of the vulnerability.
+        fixed_in:
+          type: array
+          description: List of version strings in which the vulnerability is fixed.
+          items:
+            type: string
+        link:
+          type: string
+          format: uri
+          description: A URL with more information about the vulnerability.
+    VersionResponse:
+      type: object
+      description: Version-specific metadata response for a single release.
+      properties:
+        info:
+          $ref: '#/components/schemas/ProjectInfo'
+        last_serial:
+          type: integer
+          description: A monotonically increasing integer sequence that changes every time the project is updated.
+        urls:
+          type: array
+          description: A list of release file objects associated with this specific version.
+          items:
+            $ref: '#/components/schemas/ReleaseFile'
+        vulnerabilities:
+          type: array
+          description: Known vulnerabilities affecting this specific release.
+          items:
+            $ref: '#/components/schemas/Vulnerability'
     ProjectInfo:
       type: object
       description: Core metadata about the project, sourced from the values provided at upload time.
@@ -317,25 +289,53 @@ components:
           type: string
           nullable: true
           description: The reason the release was yanked, if applicable.
-    VersionResponse:
+    ProjectResponse:
       type: object
-      description: Version-specific metadata response for a single release.
+      description: Full project metadata response including all releases.
       properties:
         info:
           $ref: '#/components/schemas/ProjectInfo'
         last_serial:
           type: integer
           description: A monotonically increasing integer sequence that changes every time the project is updated.
+        releases:
+          type: object
+          description: A mapping of version strings to arrays of release file objects. Deprecated in favor of the Index API.
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ReleaseFile'
         urls:
           type: array
-          description: A list of release file objects associated with this specific version.
+          description: A list of release file objects associated with the latest version.
           items:
             $ref: '#/components/schemas/ReleaseFile'
         vulnerabilities:
           type: array
-          description: Known vulnerabilities affecting this specific release.
+          description: Known vulnerabilities affecting the latest release of the project.
           items:
             $ref: '#/components/schemas/Vulnerability'
+  parameters:
+    VersionString:
+      name: version
+      in: path
+      required: true
+      description: The version string of the release to retrieve.
+      schema:
+        type: string
+        examples:
+        - 1.0.0
+        - 2.31.0
+    ProjectName:
+      name: project
+      in: path
+      required: true
+      description: The normalized name of the Python package on PyPI.
+      schema:
+        type: string
+        examples:
+        - requests
+        - numpy
 externalDocs:
   description: PyPI JSON API Documentation
   url: https://docs.pypi.org/api/json/

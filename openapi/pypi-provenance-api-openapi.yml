@@ -45,15 +45,6 @@ components:
         type: string
         examples:
         - 4.0.0
-    ProjectName:
-      name: project
-      in: path
-      required: true
-      description: The normalized name of the Python package on PyPI.
-      schema:
-        type: string
-        examples:
-        - sampleproject
     Filename:
       name: filename
       in: path
@@ -63,25 +54,30 @@ components:
         type: string
         examples:
         - sampleproject-4.0.0.tar.gz
+    ProjectName:
+      name: project
+      in: path
+      required: true
+      description: The normalized name of the Python package on PyPI.
+      schema:
+        type: string
+        examples:
+        - sampleproject
   schemas:
-    Publisher:
+    Provenance:
       type: object
-      description: The Trusted Publisher identity that produced the attestations. This represents the CI/CD identity verified by PyPI through OpenID Connect.
+      description: A provenance object as defined by PEP 740, containing one or more attestation bundles for a distribution file along with the Trusted Publisher identity that produced them.
       properties:
-        kind:
-          type: string
-          description: The kind of Trusted Publisher, indicating the CI/CD platform.
-          examples:
-          - GitHub
-        claims:
-          type: object
-          description: The identity claims associated with the Trusted Publisher, such as the repository and workflow information.
-          additionalProperties:
-            type: string
-        vendor-property:
-          type: string
-          nullable: true
-          description: An optional vendor-specific property providing additional context.
+        version:
+          type: integer
+          description: The provenance object version. Currently always 1.
+          enum:
+          - 1
+        attestation_bundles:
+          type: array
+          description: One or more attestation bundles, each containing the publisher identity and a set of attestations for the file.
+          items:
+            $ref: '#/components/schemas/AttestationBundle'
     Attestation:
       type: object
       description: A single attestation for a distribution file, containing a Sigstore bundle with a cryptographic signature and verification material.
@@ -113,20 +109,24 @@ components:
             signature:
               type: string
               description: The base64-encoded signature over the statement.
-    Provenance:
+    Publisher:
       type: object
-      description: A provenance object as defined by PEP 740, containing one or more attestation bundles for a distribution file along with the Trusted Publisher identity that produced them.
+      description: The Trusted Publisher identity that produced the attestations. This represents the CI/CD identity verified by PyPI through OpenID Connect.
       properties:
-        version:
-          type: integer
-          description: The provenance object version. Currently always 1.
-          enum:
-          - 1
-        attestation_bundles:
-          type: array
-          description: One or more attestation bundles, each containing the publisher identity and a set of attestations for the file.
-          items:
-            $ref: '#/components/schemas/AttestationBundle'
+        kind:
+          type: string
+          description: The kind of Trusted Publisher, indicating the CI/CD platform.
+          examples:
+          - GitHub
+        claims:
+          type: object
+          description: The identity claims associated with the Trusted Publisher, such as the repository and workflow information.
+          additionalProperties:
+            type: string
+        vendor-property:
+          type: string
+          nullable: true
+          description: An optional vendor-specific property providing additional context.
     AttestationBundle:
       type: object
       description: A bundle of attestations from a single publisher identity.
