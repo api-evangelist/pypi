@@ -62,6 +62,27 @@ paths:
         '404':
           description: Project or version not found
 components:
+  parameters:
+    ProjectName:
+      name: project
+      in: path
+      required: true
+      description: The normalized name of the Python package on PyPI.
+      schema:
+        type: string
+        examples:
+        - requests
+        - numpy
+    VersionString:
+      name: version
+      in: path
+      required: true
+      description: The version string of the release to retrieve.
+      schema:
+        type: string
+        examples:
+        - 1.0.0
+        - 2.31.0
   schemas:
     ReleaseFile:
       type: object
@@ -128,33 +149,6 @@ components:
           type: string
           nullable: true
           description: The reason the file was yanked, if applicable.
-    Vulnerability:
-      type: object
-      description: A known security vulnerability affecting the project release.
-      properties:
-        id:
-          type: string
-          description: The unique identifier for the vulnerability.
-        aliases:
-          type: array
-          description: Alternative identifiers for this vulnerability, such as CVE numbers.
-          items:
-            type: string
-        summary:
-          type: string
-          description: A brief summary of the vulnerability.
-        details:
-          type: string
-          description: Detailed description of the vulnerability.
-        fixed_in:
-          type: array
-          description: List of version strings in which the vulnerability is fixed.
-          items:
-            type: string
-        link:
-          type: string
-          format: uri
-          description: A URL with more information about the vulnerability.
     VersionResponse:
       type: object
       description: Version-specific metadata response for a single release.
@@ -289,6 +283,33 @@ components:
           type: string
           nullable: true
           description: The reason the release was yanked, if applicable.
+    Vulnerability:
+      type: object
+      description: A known security vulnerability affecting the project release.
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the vulnerability.
+        aliases:
+          type: array
+          description: Alternative identifiers for this vulnerability, such as CVE numbers.
+          items:
+            type: string
+        summary:
+          type: string
+          description: A brief summary of the vulnerability.
+        details:
+          type: string
+          description: Detailed description of the vulnerability.
+        fixed_in:
+          type: array
+          description: List of version strings in which the vulnerability is fixed.
+          items:
+            type: string
+        link:
+          type: string
+          format: uri
+          description: A URL with more information about the vulnerability.
     ProjectResponse:
       type: object
       description: Full project metadata response including all releases.
@@ -315,27 +336,6 @@ components:
           description: Known vulnerabilities affecting the latest release of the project.
           items:
             $ref: '#/components/schemas/Vulnerability'
-  parameters:
-    VersionString:
-      name: version
-      in: path
-      required: true
-      description: The version string of the release to retrieve.
-      schema:
-        type: string
-        examples:
-        - 1.0.0
-        - 2.31.0
-    ProjectName:
-      name: project
-      in: path
-      required: true
-      description: The normalized name of the Python package on PyPI.
-      schema:
-        type: string
-        examples:
-        - requests
-        - numpy
 externalDocs:
   description: PyPI JSON API Documentation
   url: https://docs.pypi.org/api/json/
