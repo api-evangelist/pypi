@@ -84,6 +84,117 @@ components:
         - requests
         - numpy
   schemas:
+    ReleaseFile:
+      type: object
+      description: Metadata about a single distribution file within a release.
+      properties:
+        filename:
+          type: string
+          description: The name of the distribution file.
+        url:
+          type: string
+          format: uri
+          description: The URL to download the distribution file.
+        size:
+          type: integer
+          description: The size of the file in bytes.
+        packagetype:
+          type: string
+          description: The type of distribution, such as sdist or bdist_wheel.
+          enum:
+          - sdist
+          - bdist_wheel
+          - bdist_egg
+          - bdist_wininst
+          - bdist_rpm
+        python_version:
+          type: string
+          description: The Python version this distribution targets.
+        requires_python:
+          type: string
+          nullable: true
+          description: The Python version requirement for this file.
+        upload_time:
+          type: string
+          format: date-time
+          description: The timestamp when the file was uploaded. Deprecated in favor of upload_time_iso_8601.
+        upload_time_iso_8601:
+          type: string
+          format: date-time
+          description: The ISO 8601 timestamp when the file was uploaded.
+        comment_text:
+          type: string
+          nullable: true
+          description: Optional comment text associated with the upload.
+        digests:
+          type: object
+          description: Hash digests for the distribution file.
+          properties:
+            md5:
+              type: string
+              description: MD5 hash digest of the file.
+            sha256:
+              type: string
+              description: SHA-256 hash digest of the file.
+            blake2b_256:
+              type: string
+              description: BLAKE2b-256 hash digest of the file.
+        has_sig:
+          type: boolean
+          description: Whether the file has a PGP signature. Deprecated, always false.
+        yanked:
+          type: boolean
+          description: Whether this file has been yanked.
+        yanked_reason:
+          type: string
+          nullable: true
+          description: The reason the file was yanked, if applicable.
+    Vulnerability:
+      type: object
+      description: A known security vulnerability affecting the project release.
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the vulnerability.
+        aliases:
+          type: array
+          description: Alternative identifiers for this vulnerability, such as CVE numbers.
+          items:
+            type: string
+        summary:
+          type: string
+          description: A brief summary of the vulnerability.
+        details:
+          type: string
+          description: Detailed description of the vulnerability.
+        fixed_in:
+          type: array
+          description: List of version strings in which the vulnerability is fixed.
+          items:
+            type: string
+        link:
+          type: string
+          format: uri
+          description: A URL with more information about the vulnerability.
+    VersionResponse:
+      type: object
+      description: Version-specific metadata response for a single release.
+      properties:
+        info:
+          $ref: '#/components/schemas/ProjectInfo'
+        last_serial:
+          type: integer
+          description: A monotonically increasing integer sequence that changes every time the project is updated.
+        urls:
+          type: array
+          description: A list of release file objects associated with this specific version.
+          items:
+            $ref: '#/components/schemas/ReleaseFile'
+        vulnerabilities:
+          type: array
+          description: Known vulnerabilities affecting this specific release.
+          items:
+            $ref: '#/components/schemas/Vulnerability'
     ProjectInfo:
       type: object
       description: Core metadata about the project, sourced from the values provided at upload time.
@@ -223,117 +334,6 @@ components:
         vulnerabilities:
           type: array
           description: Known vulnerabilities affecting the latest release of the project.
-          items:
-            $ref: '#/components/schemas/Vulnerability'
-    Vulnerability:
-      type: object
-      description: A known security vulnerability affecting the project release.
-      properties:
-        id:
-          type: string
-          description: The unique identifier for the vulnerability.
-        aliases:
-          type: array
-          description: Alternative identifiers for this vulnerability, such as CVE numbers.
-          items:
-            type: string
-        summary:
-          type: string
-          description: A brief summary of the vulnerability.
-        details:
-          type: string
-          description: Detailed description of the vulnerability.
-        fixed_in:
-          type: array
-          description: List of version strings in which the vulnerability is fixed.
-          items:
-            type: string
-        link:
-          type: string
-          format: uri
-          description: A URL with more information about the vulnerability.
-    ReleaseFile:
-      type: object
-      description: Metadata about a single distribution file within a release.
-      properties:
-        filename:
-          type: string
-          description: The name of the distribution file.
-        url:
-          type: string
-          format: uri
-          description: The URL to download the distribution file.
-        size:
-          type: integer
-          description: The size of the file in bytes.
-        packagetype:
-          type: string
-          description: The type of distribution, such as sdist or bdist_wheel.
-          enum:
-          - sdist
-          - bdist_wheel
-          - bdist_egg
-          - bdist_wininst
-          - bdist_rpm
-        python_version:
-          type: string
-          description: The Python version this distribution targets.
-        requires_python:
-          type: string
-          nullable: true
-          description: The Python version requirement for this file.
-        upload_time:
-          type: string
-          format: date-time
-          description: The timestamp when the file was uploaded. Deprecated in favor of upload_time_iso_8601.
-        upload_time_iso_8601:
-          type: string
-          format: date-time
-          description: The ISO 8601 timestamp when the file was uploaded.
-        comment_text:
-          type: string
-          nullable: true
-          description: Optional comment text associated with the upload.
-        digests:
-          type: object
-          description: Hash digests for the distribution file.
-          properties:
-            md5:
-              type: string
-              description: MD5 hash digest of the file.
-            sha256:
-              type: string
-              description: SHA-256 hash digest of the file.
-            blake2b_256:
-              type: string
-              description: BLAKE2b-256 hash digest of the file.
-        has_sig:
-          type: boolean
-          description: Whether the file has a PGP signature. Deprecated, always false.
-        yanked:
-          type: boolean
-          description: Whether this file has been yanked.
-        yanked_reason:
-          type: string
-          nullable: true
-          description: The reason the file was yanked, if applicable.
-    VersionResponse:
-      type: object
-      description: Version-specific metadata response for a single release.
-      properties:
-        info:
-          $ref: '#/components/schemas/ProjectInfo'
-        last_serial:
-          type: integer
-          description: A monotonically increasing integer sequence that changes every time the project is updated.
-        urls:
-          type: array
-          description: A list of release file objects associated with this specific version.
-          items:
-            $ref: '#/components/schemas/ReleaseFile'
-        vulnerabilities:
-          type: array
-          description: Known vulnerabilities affecting this specific release.
           items:
             $ref: '#/components/schemas/Vulnerability'
 externalDocs:

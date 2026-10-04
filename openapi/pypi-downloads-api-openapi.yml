@@ -154,18 +154,37 @@ paths:
         '404':
           description: Package not found
 components:
-  parameters:
-    PackageName:
-      name: package
-      in: path
-      required: true
-      description: The name of the Python package to retrieve download statistics for.
-      schema:
-        type: string
-        examples:
-        - requests
-        - numpy
   schemas:
+    DownloadTimeSeries:
+      type: object
+      description: Daily download time series data, optionally broken down by category.
+      properties:
+        data:
+          type: array
+          description: Array of daily download count records.
+          items:
+            $ref: '#/components/schemas/DownloadRecord'
+        package:
+          type: string
+          description: The name of the package.
+        type:
+          type: string
+          description: The type of statistics returned, such as overall_downloads, python_major_downloads, python_minor_downloads, or system_downloads.
+    DownloadRecord:
+      type: object
+      description: A single daily download count record.
+      properties:
+        category:
+          type: string
+          nullable: true
+          description: The category for this record, such as a Python version number, operating system name, or mirror inclusion flag. Null when no category breakdown is applied.
+        date:
+          type: string
+          format: date
+          description: The date of the download count in YYYY-MM-DD format.
+        downloads:
+          type: integer
+          description: The number of downloads on this date for this category.
     RecentDownloads:
       type: object
       description: Aggregate download counts for the last day, week, and month.
@@ -194,36 +213,17 @@ components:
           description: The type of statistics returned.
           examples:
           - recent_downloads
-    DownloadRecord:
-      type: object
-      description: A single daily download count record.
-      properties:
-        category:
-          type: string
-          nullable: true
-          description: The category for this record, such as a Python version number, operating system name, or mirror inclusion flag. Null when no category breakdown is applied.
-        date:
-          type: string
-          format: date
-          description: The date of the download count in YYYY-MM-DD format.
-        downloads:
-          type: integer
-          description: The number of downloads on this date for this category.
-    DownloadTimeSeries:
-      type: object
-      description: Daily download time series data, optionally broken down by category.
-      properties:
-        data:
-          type: array
-          description: Array of daily download count records.
-          items:
-            $ref: '#/components/schemas/DownloadRecord'
-        package:
-          type: string
-          description: The name of the package.
-        type:
-          type: string
-          description: The type of statistics returned, such as overall_downloads, python_major_downloads, python_minor_downloads, or system_downloads.
+  parameters:
+    PackageName:
+      name: package
+      in: path
+      required: true
+      description: The name of the Python package to retrieve download statistics for.
+      schema:
+        type: string
+        examples:
+        - requests
+        - numpy
 externalDocs:
   description: PyPI Stats API Documentation
   url: https://pypistats.org/api/
