@@ -170,21 +170,6 @@ components:
         type:
           type: string
           description: The type of statistics returned, such as overall_downloads, python_major_downloads, python_minor_downloads, or system_downloads.
-    DownloadRecord:
-      type: object
-      description: A single daily download count record.
-      properties:
-        category:
-          type: string
-          nullable: true
-          description: The category for this record, such as a Python version number, operating system name, or mirror inclusion flag. Null when no category breakdown is applied.
-        date:
-          type: string
-          format: date
-          description: The date of the download count in YYYY-MM-DD format.
-        downloads:
-          type: integer
-          description: The number of downloads on this date for this category.
     RecentDownloads:
       type: object
       description: Aggregate download counts for the last day, week, and month.
@@ -213,6 +198,21 @@ components:
           description: The type of statistics returned.
           examples:
           - recent_downloads
+    DownloadRecord:
+      type: object
+      description: A single daily download count record.
+      properties:
+        category:
+          type: string
+          nullable: true
+          description: The category for this record, such as a Python version number, operating system name, or mirror inclusion flag. Null when no category breakdown is applied.
+        date:
+          type: string
+          format: date
+          description: The date of the download count in YYYY-MM-DD format.
+        downloads:
+          type: integer
+          description: The number of downloads on this date for this category.
   parameters:
     PackageName:
       name: package
