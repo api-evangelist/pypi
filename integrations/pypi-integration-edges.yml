@@ -1,0 +1,1035 @@
+edges:
+- partner_name: Advanced Micro Devices
+  partner: advanced-micro-devices
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/AMD-OSS/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: AMD-OSS
+    register_id: https://pypi.org/org/AMD-OSS/
+    org_display_name: Advanced Micro Devices
+    matched_by: verified-package
+    packages_verified:
+    - amd-quark
+    org_projects: 165
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: AIMLAPI
+  partner: aimlapi
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/AIML.API/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: AIML.API
+    register_id: https://pypi.org/org/AIML.API/
+    org_display_name: AI/ML API
+    matched_by: verified-package
+    packages_verified:
+    - aimlapi-sdk-python
+    org_projects: 2
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: AirOps
+  partner: airops
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/airops/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: airops
+    register_id: https://pypi.org/org/airops/
+    org_display_name: AirOps
+    matched_by: verified-package
+    packages_verified:
+    - airops
+    org_projects: 1
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Anam.ai
+  partner: anamai
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Anam/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Anam
+    register_id: https://pypi.org/org/Anam/
+    org_display_name: Anam
+    matched_by: verified-package
+    packages_verified:
+    - anam
+    org_projects: 3
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Anthropic
+  partner: anthropic
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Anthropic/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Anthropic
+    register_id: https://pypi.org/org/Anthropic/
+    org_display_name: Anthropic, PBC.
+    matched_by: verified-package
+    packages_verified:
+    - anthropic
+    org_projects: 6
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Archastro
+  partner: archastro
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/ArchAstro/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: ArchAstro
+    register_id: https://pypi.org/org/ArchAstro/
+    org_display_name: ArchAstro
+    matched_by: verified-package
+    packages_verified:
+    - archastro-sdk
+    org_projects: 1
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Archil
+  partner: archil
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/archil/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: archil
+    register_id: https://pypi.org/org/archil/
+    org_display_name: Archil
+    matched_by: verified-package
+    packages_verified:
+    - archil
+    org_projects: 2
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Atla
+  partner: atla
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Atla/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Atla
+    register_id: https://pypi.org/org/Atla/
+    org_display_name: Atla
+    matched_by: verified-package
+    packages_verified:
+    - atla
+    - atla-insights
+    org_projects: 3
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Bria
+  partner: bria
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/bria.ai/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: bria.ai
+    register_id: https://pypi.org/org/bria.ai/
+    org_display_name: Bria.ai
+    matched_by: verified-package
+    packages_verified:
+    - bria-client
+    org_projects: 3
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: CData
+  partner: cdata
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/cdata/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: cdata
+    register_id: https://pypi.org/org/cdata/
+    org_display_name: CData Software
+    matched_by: verified-package
+    packages_verified:
+    - cdata-connect-ai
+    org_projects: 1
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Cloudflare
+  partner: cloudflare
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Cloudflare/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Cloudflare
+    register_id: https://pypi.org/org/Cloudflare/
+    org_display_name: Cloudflare
+    matched_by: verified-package
+    packages_verified:
+    - cloudflare
+    org_projects: 7
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Colibri
+  partner: colibri
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/ColibriTD/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: ColibriTD
+    register_id: https://pypi.org/org/ColibriTD/
+    org_display_name: ColibriTD
+    matched_by: verified-package
+    packages_verified:
+    - mpqp
+    org_projects: 2
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Composio
+  partner: composio
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Composio/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Composio
+    register_id: https://pypi.org/org/Composio/
+    org_display_name: Composio
+    matched_by: verified-package
+    packages_verified:
+    - composio
+    - composio-anthropic
+    - composio-core
+    - composio-crewai
+    - composio-openai
+    org_projects: 29
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Cosmo Tech
+  partner: cosmo-tech
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/cosmotech/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: cosmotech
+    register_id: https://pypi.org/org/cosmotech/
+    org_display_name: Cosmo Tech
+    matched_by: verified-package
+    packages_verified:
+    - CosmoTech-Acceleration-Library
+    - cosmotech-api
+    - cosmotech-run-orchestrator
+    org_projects: 9
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Dedalus Labs
+  partner: dedaluslabs
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/dedalus-labs/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: dedalus-labs
+    register_id: https://pypi.org/org/dedalus-labs/
+    org_display_name: Dedalus Labs
+    matched_by: verified-package
+    packages_verified:
+    - dedalus-labs
+    org_projects: 1
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: dottxt
+  partner: dottxt
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/dottxt/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: dottxt
+    register_id: https://pypi.org/org/dottxt/
+    org_display_name: .txt
+    matched_by: verified-package
+    packages_verified:
+    - dottxt
+    org_projects: 4
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Edgee
+  partner: edgee
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Edgee/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Edgee
+    register_id: https://pypi.org/org/Edgee/
+    org_display_name: Edgee
+    matched_by: verified-package
+    packages_verified:
+    - edgee
+    org_projects: 1
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Facebook Business Manager
+  partner: facebook-business-manager
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/meta-platforms/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: meta-platforms
+    register_id: https://pypi.org/org/meta-platforms/
+    org_display_name: Meta Platforms
+    matched_by: verified-package
+    packages_verified:
+    - facebook_business
+    org_projects: 114
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Feldera
+  partner: feldera
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/feldera.com/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: feldera.com
+    register_id: https://pypi.org/org/feldera.com/
+    org_display_name: Feldera
+    matched_by: verified-package
+    packages_verified:
+    - feldera
+    org_projects: 3
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Keeper Security
+  partner: keeper-security
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/keeper_security/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: keeper_security
+    register_id: https://pypi.org/org/keeper_security/
+    org_display_name: Keeper Security Inc.
+    matched_by: verified-package
+    packages_verified:
+    - keeper-secrets-manager-cli
+    - keeper-secrets-manager-core
+    org_projects: 10
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Lightning AI
+  partner: lightning-ai
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Lightning-AI/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Lightning-AI
+    register_id: https://pypi.org/org/Lightning-AI/
+    org_display_name: Lightning AI
+    matched_by: verified-package
+    packages_verified:
+    - lightning
+    - litai
+    - litdata
+    - pytorch-lightning
+    org_projects: 21
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: LocalStack
+  partner: localstack
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/localstack/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: localstack
+    register_id: https://pypi.org/org/localstack/
+    org_display_name: LocalStack
+    matched_by: verified-package
+    packages_verified:
+    - aws-sam-cli-local
+    - awscli-local
+    - localstack
+    - terraform-local
+    org_projects: 57
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Modular
+  partner: modular
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Modular/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Modular
+    register_id: https://pypi.org/org/Modular/
+    org_display_name: Modular Inc
+    matched_by: verified-package
+    packages_verified:
+    - max
+    - modular
+    org_projects: 12
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Neuracore
+  partner: neuracore
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/neuracore/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: neuracore
+    register_id: https://pypi.org/org/neuracore/
+    org_display_name: Neuracore
+    matched_by: verified-package
+    packages_verified:
+    - neuracore
+    org_projects: 2
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Nominal
+  partner: nominal
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/nominal/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: nominal
+    register_id: https://pypi.org/org/nominal/
+    org_display_name: Nominal
+    matched_by: verified-package
+    packages_verified:
+    - nominal
+    org_projects: 19
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: OneTick (OneMarketData)
+  partner: onetick
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/OneMarketData/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: OneMarketData
+    register_id: https://pypi.org/org/OneMarketData/
+    org_display_name: OneMarketData LLC
+    matched_by: verified-package
+    packages_verified:
+    - onetick-py
+    org_projects: 5
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: OpenAI
+  partner: openai
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/openai/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: openai
+    register_id: https://pypi.org/org/openai/
+    org_display_name: OpenAI
+    matched_by: verified-package
+    packages_verified:
+    - openai
+    - openai-agents
+    org_projects: 9
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Plotly
+  partner: plotly
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/plotly/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: plotly
+    register_id: https://pypi.org/org/plotly/
+    org_display_name: Plotly
+    matched_by: verified-package
+    packages_verified:
+    - dash-bio
+    - dash-cytoscape
+    org_projects: 62
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Profound
+  partner: profound
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Profound/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Profound
+    register_id: https://pypi.org/org/Profound/
+    org_display_name: Profound
+    matched_by: verified-package
+    packages_verified:
+    - profound
+    org_projects: 1
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Roboflow
+  partner: roboflow
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/roboflow/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: roboflow
+    register_id: https://pypi.org/org/roboflow/
+    org_display_name: Roboflow
+    matched_by: verified-package
+    packages_verified:
+    - inference
+    org_projects: 107
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Siemens
+  partner: siemens
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/siemens/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: siemens
+    register_id: https://pypi.org/org/siemens/
+    org_display_name: Siemens
+    matched_by: verified-package
+    packages_verified:
+    - siemens
+    org_projects: 4
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: SIMBA Chain
+  partner: simba-chain
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/simbachain/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: simbachain
+    register_id: https://pypi.org/org/simbachain/
+    org_display_name: SIMBA Chain Inc
+    matched_by: verified-package
+    packages_verified:
+    - simba-sdk
+    org_projects: 5
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Tako
+  partner: tako
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Tako/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Tako
+    register_id: https://pypi.org/org/Tako/
+    org_display_name: Tako
+    matched_by: verified-package
+    packages_verified:
+    - tako-sdk
+    org_projects: 1
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: TextQL
+  partner: textql
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/TextQL/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: TextQL
+    register_id: https://pypi.org/org/TextQL/
+    org_display_name: TextQL
+    matched_by: verified-package
+    packages_verified:
+    - textql
+    org_projects: 2
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: UpCloud
+  partner: upcloud
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/upcloud/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: upcloud
+    register_id: https://pypi.org/org/upcloud/
+    org_display_name: UpCloud
+    matched_by: verified-package
+    packages_verified:
+    - upcloud-api
+    org_projects: 2
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Wherobots
+  partner: wherobots
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/wherobots/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: wherobots
+    register_id: https://pypi.org/org/wherobots/
+    org_display_name: Wherobots
+    matched_by: verified-package
+    packages_verified:
+    - wherobots-python-dbapi
+    org_projects: 7
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+- partner_name: Yutori
+  partner: yutori
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: partner-built
+  evidence: https://pypi.org/org/Yutori/
+  category: PyPI organization
+  contract_reference:
+    register: PyPI organization accounts
+    spec_file: null
+    role: pypi-organization
+    registered_name: Yutori
+    register_id: https://pypi.org/org/Yutori/
+    org_display_name: Yutori
+    matched_by: verified-package
+    packages_verified:
+    - yutori
+    org_projects: 4
+    identity_note: the org is reached through packages sweep-official-sdks / official-clis verified as the provider's
+      own (domain / org leg AND publisher leg); never by the org name
+    signal_note: 'participation only (python): an organization account on PyPI, not a package count'
+    detected_by: sweep-ide-extension-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-ide-extension-marketplaces.py
+  first_seen: '2026-10-20'
+marketplace_apps:
+- marketplace: pypi-organizations
+  channel: partner-built
+  app: pypi
+  url: https://pypi.org/
+  app_count: 38
+  adapter: sweep-ide-extension-marketplaces.py:py
+  listed: 37
+  note: 'PyPI organization accounts: only domain-linked, in-market publishers sweep-devtools.py does not already
+    link are written (one edge per publisher)'
+generated: '2026-10-20'
+method: searched
+checked:
+- https://pypi.org/org/{org}/
+- https://pypi.org/pypi/{package}/json
+source:
+- https://pypi.org/org/{org}/
+- https://pypi.org/pypi/{package}/json
